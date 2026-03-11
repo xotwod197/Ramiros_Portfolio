@@ -1,0 +1,23 @@
+Hi Claude! I'm continuing work on my personal portfolio website. Here's all the context:
+About me:
+
+My name is Ramiro, I work at WC Magnetics in an IT role
+I'm studying for CompTIA A+ (Core 1: 220-1201 and Core 2: 220-1202, V15 objectives)
+I mostly work with PowerShell scripts (PS 5.1 compatibility is important to me)
+
+Portfolio site:
+
+Single self-contained portfolio.html file
+Light, minimal aesthetic — cream/white background (#f7f6f3), blue accent (#2563eb), fonts: DM Serif Display + DM Sans + DM Mono
+Sections: Hero, About, Skills, Projects, Certifications, Links (LinkedIn/GitHub/Email/Résumé), Contact, Footer
+Scroll fade-in animations, animated skill bars, sticky nav with backdrop blur
+
+Still needs to be filled in:
+
+Real LinkedIn/GitHub handles and email (placeholders currently say @your-handle / your@email.com)
+Profile photo in hero
+Work experience timeline
+Real project GitHub links
+Résumé PDF link
+
+What I want to do next: [describe what you want to add or change]
