@@ -450,6 +450,39 @@
     });
   })();
 
+  // ── Thumbnail strips: drag with the mouse to scroll, mouse wheel scrolls sideways ──
+  (function dragScroll() {
+    function attach(el) {
+      let startX = 0, startLeft = 0, down = false, dragged = false;
+      el.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        if (el.scrollWidth <= el.clientWidth) return;        // nothing to scroll
+        down = true; dragged = false; startX = e.clientX; startLeft = el.scrollLeft;
+      });
+      el.addEventListener('pointermove', e => {
+        if (!down) return;
+        const dx = e.clientX - startX;
+        if (!dragged && Math.abs(dx) > 6) { dragged = true; el.classList.add('dragging'); el.setPointerCapture(e.pointerId); }
+        if (dragged) el.scrollLeft = startLeft - dx;
+      });
+      const end = e => {
+        if (!down) return;
+        down = false;
+        if (dragged) {
+          try { el.releasePointerCapture(e.pointerId); } catch (_) {}
+          setTimeout(() => el.classList.remove('dragging'), 0);   // swallow the click that ends the drag
+        }
+      };
+      el.addEventListener('pointerup', end); el.addEventListener('pointercancel', end);
+      el.addEventListener('click', e => { if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; } }, true);
+      el.addEventListener('wheel', e => {
+        if (el.scrollWidth <= el.clientWidth) return;
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { el.scrollLeft += e.deltaY; e.preventDefault(); }
+      }, { passive: false });
+    }
+    document.querySelectorAll('.gallery-thumbs, .lb-strip').forEach(attach);
+  })();
+
   // ── Filter: All / Work / Personal (remembered in the URL hash) ──
   (function filter() {
     const buttons = Array.from(document.querySelectorAll('.filter button'));

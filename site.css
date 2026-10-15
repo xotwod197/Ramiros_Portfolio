@@ -681,8 +681,14 @@
 
   /* ── Card galleries: caption + a row of small thumbnails under the main screenshot ── */
   .card-shot figcaption { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-2); padding: 0.4rem 0.65rem; border-top: 1px solid var(--line); background: var(--surface); }
-  .gallery-thumbs { display: flex; gap: 6px; padding: 0 0.65rem 0.6rem; background: var(--surface); overflow-x: auto; scrollbar-width: none; }
-  .gallery-thumbs::-webkit-scrollbar { display: none; }
+  .gallery-thumbs { display: flex; gap: 6px; padding: 0 0.65rem 0.6rem; background: var(--surface); overflow-x: auto; cursor: grab;
+    scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+  .gallery-thumbs::-webkit-scrollbar { height: 6px; }
+  .gallery-thumbs::-webkit-scrollbar-track { background: transparent; }
+  .gallery-thumbs::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+  .gallery-thumbs::-webkit-scrollbar-thumb:hover { background: var(--ink-2); }
+  .gallery-thumbs.dragging { cursor: grabbing; scroll-snap-type: none; }
+  .gallery-thumbs.dragging button { pointer-events: none; }
   .gallery-thumbs button {
     flex: 0 0 auto; width: 64px; height: 40px; padding: 0; border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
     background: var(--surface-2); cursor: pointer; opacity: 0.7;
@@ -767,12 +773,18 @@
   .lb-cap .lb-count { font-family: var(--mono); font-size: 0.72rem; color: rgba(255,255,255,0.6); white-space: nowrap; }
   .lb-strip {
     display: flex; gap: 8px; padding: 6px; max-width: 92vw;
-    overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    overflow-x: auto; scroll-snap-type: x proximity; cursor: grab;
+    scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.16);
     -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
   }
-  .lb-strip::-webkit-scrollbar { display: none; }
+  .lb-strip::-webkit-scrollbar { height: 6px; }
+  .lb-strip::-webkit-scrollbar-track { background: transparent; }
+  .lb-strip::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.45); border-radius: 3px; }
+  .lb-strip::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.75); }
+  .lb-strip.dragging { cursor: grabbing; scroll-snap-type: none; }
+  .lb-strip.dragging button { pointer-events: none; }
   .lb-strip[hidden] { display: none; }
   .lb-strip button {
     flex: 0 0 auto; width: 96px; height: 60px; padding: 0; border: 0; border-radius: 8px; overflow: hidden;
