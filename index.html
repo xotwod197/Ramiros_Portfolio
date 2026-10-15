@@ -118,12 +118,23 @@
     gap: 2rem;
   }
   .side-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
     font-weight: 650;
-    font-size: 1.2rem;
+    font-size: 1.55rem;
     letter-spacing: -0.015em;
     line-height: 1.2;
     color: var(--ink);
     text-decoration: none;
+  }
+  .side-avatar {
+    flex: none;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--line);
   }
   .side-role { font-size: 0.86rem; color: var(--ink-2); margin-top: 0.25rem; }
   .side-status {
@@ -587,7 +598,8 @@
     }
     .side-head { min-width: 0; }
     .side-role, .side-status, .side-foot { display: none; }
-    .side-name { font-size: 1rem; white-space: nowrap; }
+    .side-name { font-size: 1.15rem; gap: 0.55rem; white-space: nowrap; }
+    .side-avatar { width: 2.1rem; height: 2.1rem; }
     .side-nav { flex-direction: row; gap: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     .side-nav::-webkit-scrollbar { display: none; }
     .side-nav a { grid-template-columns: 1fr; margin: 0; padding: 0.35rem 0.55rem; font-size: 0.82rem; border-left: none; border-bottom: 2px solid transparent; border-radius: 0; white-space: nowrap; }
@@ -614,7 +626,8 @@
     .link-grid { grid-template-columns: 1fr; }
     .console { font-size: 0.74rem; }
     .console-body { padding: 0.9rem 0.95rem 1rem; }
-    .side-name { font-size: 0.95rem; }
+    .side-name { font-size: 1.05rem; }
+    .side-avatar { width: 1.9rem; height: 1.9rem; }
     .side-nav { mask-image: linear-gradient(to right, #000 85%, transparent); -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); }
     .hero-sub { font-size: 1rem; }
     .section-head h2 { font-size: 1.45rem; }
@@ -636,7 +649,7 @@
   <!-- ── SIDEBAR ── -->
   <aside class="side">
     <div class="side-head">
-      <a href="#" class="side-name">Ramiro Herrera</a>
+      <a href="#" class="side-name"><img class="side-avatar" src="images/profile.jpg" alt="Ramiro Herrera with his baby" width="320" height="320">Ramiro Herrera</a>
       <div class="side-role">Help Desk Technician · WCMagnetics</div>
       <div class="side-status"><span class="led" aria-hidden="true"></span>available for opportunities</div>
     </div>
