@@ -99,7 +99,7 @@
         </div>
       </article>
       <article class="card" data-group="work">
-        <figure class="card-shot"><img src="images/wcm-toolbox.png" alt="WCM Toolbox home screen: a grid of tool tiles for remote session, WinRM, autologon, cleanup and hardware checks" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
+        <figure class="card-shot"><img src="images/wcm-toolbox.webp" alt="WCM Toolbox home screen: a grid of tool tiles for remote session, WinRM, autologon, cleanup and hardware checks" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
         <div class="card-body">
           <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
           <h3>WCM Toolbox — Remote Support Scripts as a Web App</h3>
@@ -177,7 +177,16 @@
     <div class="cards-group" data-group="personal">personal builds</div>
     <div class="cards" data-group="personal">
       <article class="card" data-group="personal">
-        <figure class="card-shot"><img src="images/taskapp-dashboard.webp" alt="Task App dashboard: stat cards for active tasks, completion rate and streak, a seven-day completion chart, and a today-focus list" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
+        <figure class="card-shot card-gallery">
+          <img src="images/taskapp-dashboard.webp" alt="Task App dashboard: stat cards for active tasks, completion rate and streak, a seven-day completion chart, and a today-focus list" loading="lazy" onerror="this.closest('.card-shot').remove()">
+          <figcaption>Dashboard</figcaption>
+          <div class="gallery-thumbs" role="group" aria-label="Task App views">
+            <button type="button" aria-pressed="true" data-label="Dashboard" data-alt="Task App dashboard: stat cards for active tasks, completion rate and streak, a seven-day completion chart, and a today-focus list"><img src="images/taskapp-dashboard.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Kanban" data-alt="Task App Kanban board: To Do, In Progress and Done columns with project-colored cards, due dates and tags"><img src="images/taskapp-kanban.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Calendar" data-alt="Task App calendar for October with tasks placed on their due dates and today highlighted"><img src="images/taskapp-calendar.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Task detail" data-alt="Task App task detail: status, priority, subtask progress bar, time breakdown per status, status timeline and notes"><img src="images/taskapp-detail.webp" alt="" loading="lazy"></button>
+          </div>
+        </figure>
         <div class="card-body">
           <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
           <h3>My Task App — Self-Hosted Task Tracker</h3>
@@ -186,7 +195,16 @@
         </div>
       </article>
       <article class="card" data-group="personal">
-        <figure class="card-shot"><img src="images/mynotes.png" alt="MyNotes: notebook sidebar with colored sections, note list, and a Markdown note in split edit/preview view" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='images/mynotes.jpg'}else{this.closest('.card-shot').remove()}"></figure>
+        <figure class="card-shot card-gallery">
+          <img src="images/mynotes.webp" alt="MyNotes: notebook sidebar with colored sections, note list, and a Markdown note in split edit/preview view" loading="lazy" onerror="this.closest('.card-shot').remove()">
+          <figcaption>Split edit / preview</figcaption>
+          <div class="gallery-thumbs" role="group" aria-label="MyNotes views">
+            <button type="button" aria-pressed="true" data-label="Split edit / preview" data-alt="MyNotes: notebook sidebar with colored sections, note list, and a Markdown note in split edit/preview view"><img src="images/mynotes.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Read view" data-alt="MyNotes read view: a rendered runbook with paragraph tags, checklists, a PowerShell code block and a callout"><img src="images/mynotes-read.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Find Tags" data-alt="MyNotes Find Tags panel listing every tagged line across all notes, grouped by tag type"><img src="images/mynotes-tags.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Settings" data-alt="MyNotes settings: theme, accent color, text size, interface and reading fonts, Pomodoro timer and page history options"><img src="images/mynotes-settings.webp" alt="" loading="lazy"></button>
+          </div>
+        </figure>
         <div class="card-body">
           <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
           <h3>MyNotes — Markdown Notes, Synced Everywhere</h3>
@@ -267,6 +285,16 @@
     btn.addEventListener('click', () => setOpen(!side.classList.contains('open')));
     side.querySelectorAll('.side-nav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
   })();
+
+  // ── Card galleries: thumbnails swap the main screenshot ──
+  document.querySelectorAll('.card-gallery').forEach(fig => {
+    const main = fig.querySelector(':scope > img'), cap = fig.querySelector('figcaption');
+    fig.querySelectorAll('.gallery-thumbs button').forEach(btn => btn.addEventListener('click', () => {
+      main.src = btn.querySelector('img').src; main.alt = btn.dataset.alt || '';
+      if (cap) cap.textContent = btn.dataset.label || '';
+      fig.querySelectorAll('.gallery-thumbs button').forEach(b => b.setAttribute('aria-pressed', b === btn));
+    }));
+  });
 
   // ── Filter: All / Work / Personal (remembered in the URL hash) ──
   (function filter() {
