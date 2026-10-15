@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Ramiro Herrera</title>
+<meta name="description" content="Sixteen projects by Ramiro Herrera — production kiosks, PowerShell tooling, silent deployments, lab instrument automation, and self-hosted apps.">
+<meta name="theme-color" content="#012456">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23012456'/><path d='M16 20l16 12-16 12' fill='none' stroke='%23f6d365' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M34 44h16' stroke='%23dfe9f8' stroke-width='6' stroke-linecap='round'/></svg>">
+<!-- Share preview (LinkedIn, Slack, iMessage, X). If the site address changes, update og:url, canonical and both og-image.png URLs. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ramiro Herrera">
+<meta property="og:title" content="Projects — Ramiro Herrera">
+<meta property="og:description" content="Endpoint deployment, PowerShell automation, lab instrument support, and networking for a two-site manufacturer. CompTIA A+; Network+ and CCNA in progress. Stockton, CA.">
+<meta property="og:url" content="https://xotwod197.github.io/Ramiros_Portfolio/projects.html">
+<link rel="canonical" href="https://xotwod197.github.io/Ramiros_Portfolio/projects.html">
+<meta property="og:image" content="https://xotwod197.github.io/Ramiros_Portfolio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ramiro Herrera, IT Systems Administrator and Network Support, shown in a PowerShell console">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xotwod197.github.io/Ramiros_Portfolio/og-image.png">
+<meta name="twitter:image:alt" content="Ramiro Herrera, IT Systems Administrator and Network Support, shown in a PowerShell console">
+<meta name="twitter:title" content="Projects — Ramiro Herrera">
+<meta name="twitter:description" content="Endpoint deployment, PowerShell automation, lab instrument support, and networking. Stockton, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="side">
+    <div class="side-head">
+      <a href="index.html" class="side-name"><img class="side-avatar" src="images/profile.jpg" alt="Ramiro Herrera with his baby" width="320" height="320">Ramiro Herrera</a>
+      <div class="side-role">Help Desk Technician · WCMagnetics</div>
+      <div class="side-status"><span class="led" aria-hidden="true"></span>available for opportunities</div>
+    </div>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg class="ic-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      Menu
+    </button>
+
+    <nav aria-label="Sections" id="site-nav">
+      <ul class="side-nav">
+        <li><a href="index.html#about"><span class="idx">01</span>About</a></li>
+        <li><a href="index.html#skills"><span class="idx">02</span>Skills</a></li>
+        <li><a href="index.html#experience"><span class="idx">03</span>Experience</a></li>
+        <li><a href="projects.html" aria-current="true"><span class="idx">04</span>Projects</a></li>
+        <li><a href="index.html#certifications"><span class="idx">05</span>Certifications</a></li>
+        <li><a href="index.html#resume"><span class="idx">06</span>Résumé</a></li>
+        <li><a href="index.html#links"><span class="idx">07</span>Links</a></li>
+        <li><a href="index.html#contact"><span class="idx">08</span>Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-foot">
+      <div class="side-links">
+        <a href="https://github.com/xotwod197" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ramirooherrera/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:miroh1250@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+      <div class="side-clock">Stockton, CA<br><b id="clock">--:--</b> <span id="tz">PT</span></div>
+    </div>
+  </aside>
+
+  <!-- ── CONTENT ── -->
+  <main class="content">
+
+    <header class="page-head">
+      <h1>Projects</h1>
+      <p>Everything I've built that's worth showing — tools that run on the production floor and the IT desk at WCMagnetics, and the apps I build for myself after hours. Work projects are described at the level of a résumé; nothing internal is identified.</p>
+      <div class="filter" role="group" aria-label="Filter projects">
+        <button type="button" data-filter="all" aria-pressed="true">All<span class="cnt">16</span></button>
+        <button type="button" data-filter="work" aria-pressed="false">At WCMagnetics<span class="cnt">10</span></button>
+        <button type="button" data-filter="personal" aria-pressed="false">Personal builds<span class="cnt">6</span></button>
+      </div>
+    </header>
+
+    <div class="cards-group" data-group="work">at WCMagnetics</div>
+    <div class="cards" data-group="work">
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>Production Work Instruction Kiosks</h3>
+          <p>Co-built with my manager — an in-network site that displays the work instructions engineers write, so production workers always have the correct build steps in front of them. First deployed on Raspberry Pi devices; then I built a repeatable kiosk image for mini PCs: an unattended Debian install that boots straight into Chromium fullscreen, delivered from a Ventoy USB with site-specific ISOs for Stockton and Mexico. Hands-on time per kiosk is about 30 seconds, with help desk runbooks and a deployment quick-start to match.</p>
+          <div class="chips"><span class="chip hi">Debian / Chromium</span><span class="chip">Raspberry Pi</span><span class="chip">Ventoy</span><span class="chip">production floor</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <figure class="card-shot"><img src="images/wcm-toolbox.png" alt="WCM Toolbox home screen: a grid of tool tiles for remote session, WinRM, autologon, cleanup and hardware checks" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>WCM Toolbox — Remote Support Scripts as a Web App</h3>
+          <p>The PowerShell scripts I reach for every day, bundled into one PowerShell 7 script that serves a local web UI: an Invoke-Command remoting tool, WinRM enable/disable, autologon set/remove for shared production accounts, user profile removal, hardware health checks, drive cleanup, forced uninstall and restart, a remote USB device scanner, and a network file search. Each tool opens as a full page, tiles drag to reorder, and the whole thing runs elevated the same way the scripts always did. All 5.1-compatible where they run remotely.</p>
+          <div class="chips"><span class="chip hi">PowerShell 7</span><span class="chip">local web UI</span><span class="chip">WinRM</span><span class="chip">remote admin</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <figure class="card-shot"><img src="images/wcm-ip-scanner.png" alt="WCM IP Scanner: stat tiles above a full-width table of discovered devices with IP, MAC and hostname" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>WCM IP Scanner</h3>
+          <p>A single PowerShell 7 script that serves a browser UI on localhost and sweeps the site's internal subnets, keeping a MAC-address and hostname database of every device it has ever seen so new or moved devices stand out. Built for the portrait monitor it runs on — single column, full-width IP tables — with a macOS-style header, stat tiles, and in-app alert dialogs instead of browser prompts.</p>
+          <div class="chips"><span class="chip hi">PowerShell 7</span><span class="chip">local web UI</span><span class="chip">networking</span><span class="chip">inventory</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>Silent Deployments — SOLIDWORKS, Windows 11, WorldShip, Printers</h3>
+          <p>Fleet-wide packages built in PDQ Deploy. SOLIDWORKS 2026 SP1.1: fixed the admin image to exclude three corrupt components, finalized the uninstall workflow, stopped PDQ reporting success before the installer finished by wrapping it in <code>Start-Process -Wait</code>, and confirmed installs with a registry-based verification script. Windows 11 25H2: ISO mounted with <code>Mount-DiskImage</code> and run with dynamic update disabled to force offline media mode. UPS WorldShip 2024 → 2026 across the admin workstation and five remote shipping stations, done after hours with zero shipping downtime. Shared printer rollout to the lab fleet from the print server, with bulk cleanup of duplicate queues.</p>
+          <div class="chips"><span class="chip hi">PDQ Deploy</span><span class="chip">PowerShell</span><span class="chip">fleet deployment</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>Lab Instrument Automation &amp; Support</h3>
+          <p>Excel VBA templates that drive Keysight LCR meters directly from the measurement sheet — started with a single LAN-connected meter and extended to a three-meter USB cascade across three PCs, plus a GPIB-controlled auto-test template with buttons injected via OOXML and a worksheet dispatcher for measurement columns. Also the support side: IO Libraries version compatibility, re-terminating a wall jack to bring a network analyzer back online, pulling firmware versions over the LXI web interface with PowerShell, and setting up PC control for a new Rigol spectrum analyzer.</p>
+          <div class="chips"><span class="chip hi">Excel VBA</span><span class="chip">Keysight</span><span class="chip">GPIB / USB / LAN</span><span class="chip">test lab</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>Hard-Problem Case Files</h3>
+          <p>The investigations I'm proudest of. A lab tester's USB driver stopped loading after a Windows cumulative update pushed an enforced code-integrity policy that rejected its expired cross-certificate — fixed by removing the policy files from the EFI partition and System32. A persistent Intel graphics driver rollback traced to a stale driver-store entry and blocked from being re-offered by Windows Update. Recurring BSODs across five different bugchecks isolated to a hardware memory fault with WinDbg minidump analysis and a repeatable MemTest86 failure. Application freezes traced to redirected folders and hundreds of open SMB handles over an unstable Wi-Fi link, with a documented evidence trail.</p>
+          <div class="chips"><span class="chip hi">diagnostics</span><span class="chip">WinDbg</span><span class="chip">MemTest86</span><span class="chip">root cause</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>Employee Onboarding Document Suite</h3>
+          <p>A complete set of new-hire IT documents on company letterhead: workstation checklist, fillable desktop and laptop setup instructions, supplemental guides, and a first-logon welcome popup written in PowerShell. Letterhead is applied as a reportlab overlay merged with pypdf, so every document comes out consistent.</p>
+          <div class="chips"><span class="chip hi">Python</span><span class="chip">reportlab / pypdf</span><span class="chip">PowerShell</span><span class="chip">onboarding</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>Status Board, Shift Dashboard &amp; Sign-in Tracker</h3>
+          <p>Small single-file web tools for the desk and the floor. A touch-optimized cubicle status board on an Android tablet (large tap targets, swipe-to-cycle with a staged commit, auto-reverting timers, cross-tab localStorage sync). A shift dashboard restyled to the same industrial look while keeping its milestone markers, calendar, and break alerts. An editable tracker for shared lab account assignments that replaced a fragile Excel file.</p>
+          <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">Fully Kiosk</span><span class="chip">internal tool</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
+          <h3>Photo Wall — Second-Screen Slideshow</h3>
+          <p>A PowerShell app for a user whose TV is connected to her PC over ScreenBeam: her photos play as a slideshow on the TV while she keeps working on her main screen. Packaged for PDQ Deploy from a network share with a desktop shortcut, launched with no PowerShell console window popping up.</p>
+          <div class="chips"><span class="chip hi">PowerShell</span><span class="chip">PDQ Deploy</span><span class="chip">ScreenBeam</span><span class="chip">end user</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="work">
+        <div class="card-body">
+          <div class="card-kicker"><span>at WCMagnetics</span><span class="wip">in progress</span></div>
+          <h3>Sage 100 Activity Dashboard</h3>
+          <p>A tool to show who currently has Sage 100 open across the company and whether each person is actively working in it or has it open idle — so seats can be freed and support can see who's affected before touching the server. Proof of concept works: a remote process check over CIM for the Sage client, combined with session idle time from <code>quser</code>, tested against a lab PC. Next: the dashboard UI.</p>
+          <div class="chips"><span class="chip hi">PowerShell</span><span class="chip">CIM / WinRM</span><span class="chip">Sage 100</span><span class="chip">dashboard</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="cards-group" data-group="personal">personal builds</div>
+    <div class="cards" data-group="personal">
+      <article class="card" data-group="personal">
+        <figure class="card-shot"><img src="images/taskapp-dashboard.webp" alt="Task App dashboard: stat cards for active tasks, completion rate and streak, a seven-day completion chart, and a today-focus list" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
+        <div class="card-body">
+          <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
+          <h3>My Task App — Self-Hosted Task Tracker</h3>
+          <p>A personal task tracker with a PowerShell HTTP backend persisting JSON to a network share. Kanban, list, and calendar views; a bento dashboard with sparklines, streaks, and at-risk tasks; Pomodoro timer, recurring tasks, subtasks, and a Comfy/Compact density toggle. The current build is a macOS-style design with SwiftUI-style spring animations on buttons, hover, and view changes. Runs as a Chrome PWA with a silent launcher and a scheduled task so it's up when I log in.</p>
+          <div class="chips"><span class="chip hi">PowerShell</span><span class="chip">HTTP backend</span><span class="chip">PWA</span><span class="chip">self-hosted</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="personal">
+        <figure class="card-shot"><img src="images/mynotes.png" alt="MyNotes: notebook sidebar with colored sections, note list, and a Markdown note in split edit/preview view" loading="lazy" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='images/mynotes.jpg'}else{this.closest('.card-shot').remove()}"></figure>
+        <div class="card-body">
+          <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
+          <h3>MyNotes — Markdown Notes, Synced Everywhere</h3>
+          <p>Started as a self-contained notes app in one HTML file, now a live site with a Node/Express backend and Postgres, so every device sees the same notebook. Organized like OneNote — notebooks › sections › pages › subpages, color-coded from the sidebar — with page history you can restore, Quick Notes, paragraph tags with a Find Tags summary, wikilinks, a split edit/preview pane, PowerShell syntax highlighting, image paste, and a focus timer. IndexedDB keeps an offline copy: edits save on-device when the server is unreachable and sync when the connection returns. Every dialog is built in-app, login is rate-limited, and the whole stack deploys from one Render blueprint.</p>
+          <div class="chips"><span class="chip hi">Node / Express</span><span class="chip">Postgres</span><span class="chip">IndexedDB</span><span class="chip">Markdown</span><span class="chip">Render</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="personal">
+        <figure class="card-shot"><img src="images/pocket.jpg" alt="Pocket on three phones: the home screen with safe-to-spend, the calendar with daily balances, and the transaction list" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
+        <div class="card-body">
+          <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
+          <h3>Pocket — Phone-First Money Tracker</h3>
+          <p>An expense tracker installed on my iPhone home screen. The home screen leads with how much is <em>safe to spend</em> until the next payday, with account balances, bills due this week, budgets, and goals. A calendar shows the money left on every day, with paydays and bills on their real dates. Insights cover spending by category, income vs. spending, and a 60-day forecast. A paycheck planner moves paydays off weekends and holidays. Google sign-in with Firestore rules that keep each person's data private, offline support, and deploys to Firebase Hosting from GitHub Actions. Runs on free tiers at $0.</p>
+          <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">Firebase</span><span class="chip">PWA</span><span class="chip">GitHub Actions</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="personal">
+        <div class="card-body">
+          <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
+          <h3>CCNA 200-301 Study Console</h3>
+          <p>My own exam prep tool, built as a single HTML file with progress saved in the browser. A NOC-console layout with an SVG topology map as navigation, all six blueprint domains at exam depth, 18 guided IOS labs in a CLI simulator, a subnetting/VLSM drill generator, a blueprint-weighted timed practice exam, and spaced-repetition flashcards.</p>
+          <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">localStorage</span><span class="chip">study tools</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="personal">
+        <div class="card-body">
+          <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
+          <h3>CompTIA A+ &amp; Network+ Study Hubs</h3>
+          <p>Terminal-style study hubs for A+ (the tools I passed with) and Network+ N10-009, each with a domain-weighted test engine. Plus an A+ arcade with four minigames — because drilling port numbers is more fun when it has a score.</p>
+          <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">game dev</span><span class="chip">study tools</span></div>
+        </div>
+      </article>
+      <article class="card" data-group="personal">
+        <div class="card-body">
+          <div class="card-kicker"><span>personal build</span><span class="wip">in progress</span></div>
+          <h3>Home Lab</h3>
+          <p>Building a home network lab from scratch for CCNA-style practice — VLANs, routing, firewalls — alongside self-hosted apps and NAS storage. Small rack, mini PCs and small-form-factor desktops, headed for a garage or closet where noise isn't a concern.</p>
+          <div class="chips"><span class="chip hi">networking</span><span class="chip">NAS / self-hosting</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="proj-cta">
+      <a href="index.html#experience" class="btn btn-line">Back to experience</a>
+      <a href="index.html#contact" class="btn btn-ink">Get in touch</a>
+    </div>
+
+    <footer>
+      <span>Ramiro Herrera · <span id="year"></span></span>
+      <span>plain HTML + CSS · no frameworks · no build step</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ── Local time in Stockton, CA ──
+  (function clock() {
+    const el = document.getElementById('clock'), tz = document.getElementById('tz');
+    if (!el) return;
+    function tick() {
+      const now = new Date();
+      el.textContent = now.toLocaleTimeString('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' });
+      const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' }).formatToParts(now);
+      const z = parts.find(p => p.type === 'timeZoneName');
+      if (z) tz.textContent = z.value;
+    }
+    tick(); setInterval(tick, 30000);
+  })();
+
+  // ── Phone menu ──
+  (function phoneUi() {
+    const side = document.querySelector('.side');
+    const btn = side.querySelector('.menu-btn');
+    const setOpen = open => { side.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
+    btn.addEventListener('click', () => setOpen(!side.classList.contains('open')));
+    side.querySelectorAll('.side-nav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  })();
+
+  // ── Filter: All / Work / Personal (remembered in the URL hash) ──
+  (function filter() {
+    const buttons = Array.from(document.querySelectorAll('.filter button'));
+    const groups = Array.from(document.querySelectorAll('[data-group]'));
+    function apply(f) {
+      buttons.forEach(b => b.setAttribute('aria-pressed', b.dataset.filter === f));
+      groups.forEach(g => g.classList.toggle('hidden', f !== 'all' && g.dataset.group !== f));
+      history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f);
+    }
+    buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.filter)));
+    const h = location.hash.slice(1);
+    apply(h === 'work' || h === 'personal' ? h : 'all');
+  })();
+</script>
+</body>
+</html>

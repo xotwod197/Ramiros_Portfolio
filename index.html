@@ -4,18 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ramiro Herrera — IT Systems Administrator | Network Support</title>
-<meta name="description" content="Ramiro Herrera — Help Desk Technician at WCMagnetics. Endpoint deployment, PowerShell automation, lab instrument support, and networking. Stockton, CA.">
+<meta name="description" content="Ramiro Herrera — IT systems administration and network support in Stockton, CA. Endpoint deployment, PowerShell automation, lab instrument support, and self-hosted tools.">
 <meta name="theme-color" content="#012456">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23012456'/><path d='M16 20l16 12-16 12' fill='none' stroke='%23f6d365' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/><path d='M34 44h16' stroke='%23dfe9f8' stroke-width='6' stroke-linecap='round'/></svg>">
-<!-- Share preview (LinkedIn, Slack, iMessage, X). Set og:url and og:image to absolute URLs once the site is hosted. -->
+<!-- Share preview (LinkedIn, Slack, iMessage, X). If the site address changes, update og:url, canonical and both og-image.png URLs. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ramiro Herrera">
 <meta property="og:title" content="Ramiro Herrera — IT Systems Administrator | Network Support">
 <meta property="og:description" content="Endpoint deployment, PowerShell automation, lab instrument support, and networking for a two-site manufacturer. CompTIA A+; Network+ and CCNA in progress. Stockton, CA.">
 <meta property="og:url" content="https://xotwod197.github.io/Ramiros_Portfolio/">
 <link rel="canonical" href="https://xotwod197.github.io/Ramiros_Portfolio/">
-<!-- <meta property="og:image" content="https://your-domain.example/og-image.png"> -->
-<!-- Share image: if the site address changes, update the two og-image.png URLs below along with og:url. -->
 <meta property="og:image" content="https://xotwod197.github.io/Ramiros_Portfolio/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,641 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  /* ─────────────────────────────────────────────
-     TOKENS
-     ───────────────────────────────────────────── */
-  :root {
-    --bg: #f4f6f8;
-    --surface: #ffffff;
-    --surface-2: #eaeef2;
-    --line: #d9e0e7;
-    --line-strong: #b9c4cf;
-    --ink: #0e1a2b;
-    --ink-2: #51617a;
-    --ink-3: #8592a3;
-
-    --console: #012456;          /* PowerShell blue */
-    --console-2: #0a2f66;
-    --console-ink: #dfe9f8;
-    --console-dim: #8fa6cc;
-    --console-prompt: #f6d365;   /* PS prompt yellow */
-    --console-cmd: #ffffff;
-    --console-key: #7fd1c0;
-
-    --accent: #0f766e;
-    --accent-ink: #0b5e58;
-    --accent-soft: #d8efeb;
-    --amber: #b45309;
-    --amber-soft: #fbeed6;
-    --ok: #15803d;
-    --ok-soft: #dcf5e3;
-
-    --sans: 'Geist', 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, 'Courier New', monospace;
-
-    --r: 6px;
-    --side-w: clamp(232px, 18vw, 280px);
-    --content-w: 920px;
-    --gutter: clamp(1.25rem, 4vw, 4rem);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-  body {
-    font-family: var(--sans);
-    font-size: 16.5px;
-    line-height: 1.65;
-    color: var(--ink);
-    background: var(--bg);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-
-  a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  a:hover { color: var(--ink); }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-  code, .mono { font-family: var(--mono); }
-  p code, li code {
-    white-space: nowrap;
-    font-size: 0.86em;
-    background: var(--surface-2);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 0.05em 0.35em;
-  }
-  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-  /* ─────────────────────────────────────────────
-     SHELL: sidebar + content
-     ───────────────────────────────────────────── */
-  .shell {
-    display: grid;
-    grid-template-columns: var(--side-w) minmax(0, 1fr);
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .side {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    padding: 2.5rem 1.75rem 2rem var(--gutter);
-    border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .side-name {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-weight: 650;
-    font-size: 1.55rem;
-    letter-spacing: -0.015em;
-    line-height: 1.2;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .side-avatar {
-    flex: none;
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--line);
-  }
-  .side-role { font-size: 0.86rem; color: var(--ink-2); margin-top: 0.25rem; }
-  .side-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.85rem;
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--ok);
-  }
-  .led {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--ok);
-    box-shadow: 0 0 0 3px var(--ok-soft);
-    animation: blink 2.4s ease-in-out infinite;
-  }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-
-  .menu-btn { display: none; }
-  .resume-toggle { display: none; }
-  .side-nav { list-style: none; display: flex; flex-direction: column; gap: 0.1rem; }
-  .side-nav a {
-    display: grid;
-    grid-template-columns: 1.25rem 1fr;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.42rem 0.5rem;
-    margin-left: -0.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    color: var(--ink-2);
-    font-size: 0.92rem;
-    border-left: 2px solid transparent;
-    transition: color 0.15s, background 0.15s;
-  }
-  .side-nav a .idx {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--ink-3);
-  }
-  .side-nav a:hover { color: var(--ink); background: var(--surface-2); }
-  .side-nav a[aria-current="true"] {
-    color: var(--ink);
-    font-weight: 600;
-    border-left-color: var(--accent);
-    border-radius: 0 4px 4px 0;
-  }
-  .side-nav a[aria-current="true"] .idx { color: var(--accent); }
-
-  .side-foot {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    font-size: 0.82rem;
-    color: var(--ink-2);
-  }
-  .side-links { display: flex; gap: 0.5rem; }
-  .side-links a {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 34px; height: 34px;
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    color: var(--ink-2);
-    background: var(--surface);
-    transition: border-color 0.15s, color 0.15s;
-  }
-  .side-links a:hover { border-color: var(--ink); color: var(--ink); }
-  .side-links svg { width: 16px; height: 16px; }
-  .side-clock { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-3); line-height: 1.5; }
-  .side-clock b { color: var(--ink-2); font-weight: 500; }
-
-  .content { padding: 0 var(--gutter) 6rem; }
-  .content > * { max-width: var(--content-w); }
-
-  /* ─────────────────────────────────────────────
-     HERO
-     ───────────────────────────────────────────── */
-  .hero { padding-top: clamp(1.5rem, 5vh, 3.5rem); }
-
-  .console {
-    background: var(--console);
-    color: var(--console-ink);
-    border-radius: var(--r);
-    border: 1px solid var(--console-2);
-    box-shadow: 0 20px 50px -30px rgba(1, 36, 86, 0.6);
-    overflow: hidden;
-    font-family: var(--mono);
-    font-size: 0.86rem;
-    line-height: 1.6;
-  }
-  .console-bar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.5rem 0.9rem;
-    background: var(--console-2);
-    color: var(--console-dim);
-    font-size: 0.72rem;
-  }
-  .console-bar .dots { display: flex; gap: 6px; }
-  .console-bar .dots i { width: 9px; height: 9px; border-radius: 50%; background: #2f4c86; display: block; }
-  .console-body { padding: 1.1rem 1.25rem 1.25rem; min-height: 15.5em; }
-  .prompt { color: var(--console-prompt); }
-  .cmd { color: var(--console-cmd); }
-  .cmd .param { color: var(--console-dim); }
-  .cmd .str { color: #a9dc76; }
-  .caret {
-    display: inline-block; width: 0.6ch; height: 1.05em;
-    background: var(--console-ink);
-    vertical-align: -0.15em;
-    margin-left: 1px;
-    animation: caret 1s steps(1) infinite;
-  }
-  @keyframes caret { 50% { opacity: 0; } }
-  .console.done .caret { display: none; }
-
-  .fl { margin-top: 1em; display: grid; row-gap: 0.15em; }
-  .fl-row {
-    display: grid;
-    grid-template-columns: 15ch 1.5ch 1fr;
-    opacity: 0;
-    transform: translateY(2px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-  .fl-row.show { opacity: 1; transform: none; }
-  .fl-row .k { color: var(--console-key); }
-  .fl-row .sep { color: var(--console-dim); }
-  .fl-row .v { color: var(--console-ink); white-space: pre-wrap; }
-  .fl-row .v .ok { color: #a9dc76; }
-  .fl-row .v .wip { color: var(--console-prompt); }
-  .console-end { margin-top: 1em; color: var(--console-prompt); opacity: 0; transition: opacity 0.3s; }
-  .console.done .console-end { opacity: 1; }
-
-  .hero-text { margin-top: 2.25rem; }
-  .hero h1 {
-    font-size: clamp(1.7rem, 1.1rem + 2.2vw, 2.85rem);
-    line-height: 1.12;
-    font-weight: 650;
-    letter-spacing: -0.035em;
-    max-width: 24ch;
-    text-wrap: balance;
-  }
-  .hero-sub {
-    margin-top: 1.1rem;
-    font-size: 1.08rem;
-    color: var(--ink-2);
-    max-width: 64ch;
-    line-height: 1.65;
-  }
-  .hero-cta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.75rem; }
-
-  .btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.62rem 1.1rem;
-    border-radius: var(--r);
-    font: inherit; font-size: 0.9rem; font-weight: 550;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
-  }
-  .btn svg { width: 14px; height: 14px; }
-  .btn-ink { background: var(--ink); color: #fff; border-color: var(--ink); }
-  .btn-ink:hover { background: var(--console); border-color: var(--console); color: #fff; }
-  .btn-line { background: var(--surface); color: var(--ink); border-color: var(--line-strong); }
-  .btn-line:hover { border-color: var(--ink); color: var(--ink); }
-  .btn:active { transform: translateY(1px); }
-
-  /* ─────────────────────────────────────────────
-     SECTIONS
-     ───────────────────────────────────────────── */
-  .section { padding-top: 5rem; scroll-margin-top: 1.5rem; }
-  .section-head {
-    display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
-    padding-bottom: 0.75rem;
-    margin-bottom: 1.75rem;
-    border-bottom: 1px solid var(--line-strong);
-  }
-  .section-head h2 {
-    font-size: 1.65rem;
-    font-weight: 650;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-  }
-  .anchor {
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--ink-3);
-    text-decoration: none;
-  }
-  .anchor:hover { color: var(--accent-ink); }
-
-  .lede { font-size: 1.05rem; color: var(--ink-2); max-width: 68ch; }
-  .prose p { color: var(--ink-2); margin-bottom: 1rem; max-width: 72ch; text-wrap: pretty; }
-  .prose p:last-child { margin-bottom: 0; }
-  .prose strong { color: var(--ink); font-weight: 600; }
-
-  /* Key facts (definition table) */
-  .facts {
-    margin-top: 2rem;
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    background: var(--surface);
-    overflow: hidden;
-  }
-  .facts-title {
-    padding: 0.55rem 1rem;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--ink-2);
-    background: var(--surface-2);
-    border-bottom: 1px solid var(--line);
-  }
-  .facts dl { display: grid; grid-template-columns: 11rem 1fr; }
-  .facts dt, .facts dd { padding: 0.62rem 1rem; border-top: 1px solid var(--line); }
-  .facts dt:first-of-type, .facts dd:first-of-type { border-top: none; }
-  .facts dt { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-2); background: #fafbfc; }
-  .facts dd { font-size: 0.92rem; }
-
-  /* ─────────────────────────────────────────────
-     SKILLS
-     ───────────────────────────────────────────── */
-  .skill-groups { column-count: 2; column-gap: 2.5rem; }
-  .skill-group { break-inside: avoid; margin-bottom: 1.5rem; }
-  .skill-group h3 {
-    font-size: 0.92rem;
-    font-weight: 600;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.25rem;
-    border-bottom: 1px solid var(--line);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .skill-group h3 .n { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3); font-weight: 400; }
-  .skill { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 1rem; padding: 0.7rem 0; border-bottom: 1px dashed var(--line); align-items: start; }
-  .skill:last-child { border-bottom: none; }
-  .skill-name { font-weight: 550; font-size: 0.92rem; }
-  .skill-desc { grid-column: 1 / -1; font-size: 0.82rem; color: var(--ink-2); line-height: 1.5; }
-  .meter { display: inline-flex; gap: 3px; margin-top: 0.35rem; }
-  .meter i { display: block; width: 11px; height: 7px; border-radius: 1.5px; background: var(--line); }
-  .meter[data-level="1"] i:nth-child(-n+1),
-  .meter[data-level="2"] i:nth-child(-n+2),
-  .meter[data-level="3"] i:nth-child(-n+3),
-  .meter[data-level="4"] i:nth-child(-n+4),
-  .meter[data-level="5"] i:nth-child(-n+5) { background: var(--accent); }
-
-  .tools { margin-top: 2.25rem; }
-  .tools-title { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-2); margin-bottom: 0.65rem; }
-  .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .chip {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    padding: 0.22rem 0.55rem;
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    background: var(--surface);
-    color: var(--ink-2);
-  }
-  .chip.hi { border-color: var(--accent); color: var(--accent-ink); background: var(--accent-soft); }
-
-  /* ─────────────────────────────────────────────
-     EXPERIENCE
-     ───────────────────────────────────────────── */
-  .job { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1.5rem; padding: 1.75rem 0; border-top: 1px solid var(--line); }
-  .job:first-of-type { border-top: none; padding-top: 0; }
-  .job-when { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-2); line-height: 1.6; }
-  .job-when .now {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    margin-top: 0.5rem;
-    color: var(--ok);
-  }
-  .job-when .now::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
-  .job-role { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; }
-  .job-org { color: var(--ink-2); font-size: 0.92rem; margin-top: 0.1rem; }
-  .job-org b { color: var(--accent-ink); font-weight: 600; }
-  .job-summary { margin-top: 0.9rem; color: var(--ink-2); font-size: 0.95rem; max-width: 72ch; }
-
-  .duty-groups { margin-top: 1.25rem; display: grid; gap: 1.1rem; }
-  .duty h4 {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--accent-ink);
-    margin-bottom: 0.4rem;
-  }
-  .duty ul { list-style: none; display: grid; gap: 0.4rem; }
-  .duty li { position: relative; padding-left: 1.05rem; font-size: 0.9rem; color: var(--ink-2); line-height: 1.55; }
-  .duty li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 5px; height: 5px; background: var(--line-strong); border-radius: 1px; }
-  .duty li strong { color: var(--ink); font-weight: 550; }
-
-  /* ─────────────────────────────────────────────
-     PROJECTS
-     ───────────────────────────────────────────── */
-  .proj-group { margin-bottom: 2.25rem; }
-  .proj-group-title {
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--ink-2);
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .proj { display: grid; grid-template-columns: 1fr 12rem; gap: 0.5rem 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
-  .proj:last-child { border-bottom: none; }
-  .proj h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
-  .proj p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.6; max-width: 60ch; }
-  .proj-meta { display: flex; flex-wrap: wrap; align-content: start; justify-content: flex-end; gap: 0.3rem; }
-  .proj-meta .chip { font-size: 0.68rem; }
-  /* Optional per-card screenshot. Omit the figure when a project has none. */
-  .proj-shot {
-    margin-top: 0.9rem; max-width: 60ch;
-    border: 1px solid var(--line); border-radius: var(--r);
-    background: var(--surface-2); overflow: hidden;
-  }
-  .proj-shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
-  .proj-shot figcaption { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-2); padding: 0.4rem 0.65rem; border-top: 1px solid var(--line); background: var(--surface); }
-
-  /* ─────────────────────────────────────────────
-     CERTIFICATIONS — status lines
-     ───────────────────────────────────────────── */
-  .status-list {
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    background: var(--surface);
-    overflow: hidden;
-  }
-  .status {
-    display: grid;
-    grid-template-columns: 5.5rem 1fr auto;
-    gap: 1rem;
-    align-items: center;
-    padding: 0.85rem 1rem;
-    border-top: 1px solid var(--line);
-    font-size: 0.92rem;
-  }
-  .status:first-child { border-top: none; }
-  .status .code {
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    font-weight: 600;
-    padding: 0.15rem 0.45rem;
-    border-radius: 3px;
-    text-align: center;
-    letter-spacing: 0.02em;
-  }
-  .status .code.ok { background: var(--ok-soft); color: var(--ok); }
-  .status .code.wip { background: var(--amber-soft); color: var(--amber); }
-  .status .what b { font-weight: 600; }
-  .status .what span { display: block; font-size: 0.8rem; color: var(--ink-2); }
-  .status .when { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-2); white-space: nowrap; }
-  .cert-note { margin-top: 1rem; font-size: 0.86rem; color: var(--ink-2); max-width: 60ch; }
-
-  /* ─────────────────────────────────────────────
-     RÉSUMÉ (printable)
-     ───────────────────────────────────────────── */
-  .resume-bar {
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-    margin-bottom: 1.25rem;
-    font-size: 0.86rem; color: var(--ink-2);
-  }
-  .resume-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .resume { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 2.25rem 2.5rem; }
-  .r-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; padding-bottom: 1.25rem; margin-bottom: 1.25rem; border-bottom: 2px solid var(--ink); }
-  .r-name { font-size: 1.7rem; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
-  .r-title { color: var(--accent-ink); font-weight: 550; font-size: 0.95rem; margin-top: 0.25rem; }
-  .r-contact { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-2); text-align: right; line-height: 1.7; }
-  .r-section { margin-top: 1.5rem; }
-  .r-section h3 {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--accent-ink);
-    margin-bottom: 0.65rem;
-  }
-  .r-p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.65; }
-  .r-entry { margin-top: 1rem; }
-  .r-entry:first-of-type { margin-top: 0; }
-  .r-top { display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; align-items: baseline; margin-bottom: 0.4rem; }
-  .r-role { font-weight: 600; font-size: 0.94rem; }
-  .r-date { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-2); white-space: nowrap; }
-  .r-mode { font-weight: 450; color: var(--ink-2); font-size: 0.86rem; }
-  .r-org { font-size: 0.86rem; color: var(--ink-2); margin: -0.15rem 0 0.45rem; }
-  .r-p strong { color: var(--ink); font-weight: 600; }
-  .r-contact a { color: inherit; text-decoration: none; }
-  .r-ul { list-style: none; display: grid; gap: 0.35rem; }
-  .r-ul li { position: relative; padding-left: 1rem; font-size: 0.87rem; color: var(--ink-2); line-height: 1.55; }
-  .r-ul li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; background: var(--accent); border-radius: 1px; }
-  .r-ul li strong { color: var(--ink); font-weight: 600; }
-
-  /* ─────────────────────────────────────────────
-     LINKS + CONTACT
-     ───────────────────────────────────────────── */
-  .link-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
-  .link {
-    display: flex; flex-direction: column; gap: 0.6rem;
-    padding: 1.1rem 1.1rem 1rem;
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    background: var(--surface);
-    text-decoration: none;
-    color: var(--ink);
-    transition: border-color 0.15s, background 0.15s;
-  }
-  .link:hover { border-color: var(--ink); }
-  .link svg { width: 20px; height: 20px; color: var(--ink-2); }
-  .link:hover svg { color: var(--ink); }
-  .link b { font-size: 0.9rem; font-weight: 600; }
-  .link span { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-2); word-break: break-all; }
-
-  .contact {
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
-    border-radius: var(--r);
-    background: var(--surface);
-    padding: 2rem 2.25rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  .contact h2 { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.03em; }
-  .contact p { color: var(--ink-2); margin-top: 0.4rem; max-width: 46ch; }
-
-  footer {
-    margin-top: 5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--ink-3);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
-  }
-
-  /* ─────────────────────────────────────────────
-     PRINT — résumé only
-     ───────────────────────────────────────────── */
-  @media print {
-    .side, .hero, #about, #skills, #experience, #projects, #certifications, #links, #contact, footer, .resume-bar { display: none !important; }
-    body { background: #fff; }
-    .shell { display: block; max-width: none; }
-    .content { padding: 0; }
-    .content > * { max-width: none; }
-    .section { padding: 0; }
-    .section-head { display: none; }
-    .resume { border: none; padding: 0; display: block !important; }
-    .r-ul li::before { background: #000; }
-    .r-section h3, .r-title { color: #000; }
-    a { color: inherit; text-decoration: none; }
-  }
-
-  /* ─────────────────────────────────────────────
-     RESPONSIVE
-     ───────────────────────────────────────────── */
-  @media (max-width: 960px) {
-    .shell { grid-template-columns: minmax(0, 1fr); }
-    .side { flex-wrap: wrap; }
-    .side nav { display: none; flex-basis: 100%; }
-    .side.open nav { display: block; }
-    .menu-btn {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      padding: 0.45rem 0.75rem; border: 1px solid var(--line-strong); border-radius: var(--r);
-      background: var(--surface); color: var(--ink); font: inherit; font-size: 0.85rem; font-weight: 550; cursor: pointer;
-    }
-    .menu-btn svg { width: 16px; height: 16px; }
-    .menu-btn .ic-close { display: none; }
-    .side.open .menu-btn .ic-open { display: none; }
-    .side.open .menu-btn .ic-close { display: block; }
-    .side {
-      position: sticky; top: 0; height: auto; z-index: 50;
-      padding: 0.7rem var(--gutter);
-      border-right: none; border-bottom: 1px solid var(--line);
-      background: rgba(244, 246, 248, 0.92);
-      backdrop-filter: blur(10px);
-      flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem;
-    }
-    .side-head { min-width: 0; }
-    .side-role, .side-status, .side-foot { display: none; }
-    .side-name { font-size: 1.15rem; gap: 0.55rem; white-space: nowrap; }
-    .side-avatar { width: 2.1rem; height: 2.1rem; }
-    .side-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0.15rem 0.75rem; padding: 0.6rem 0 0.35rem; }
-    .side-nav a { margin: 0; padding: 0.7rem 0.6rem; font-size: 0.95rem; border-radius: var(--r); }
-    .resume-toggle { display: inline-flex; }
-    .resume:not(.open) { display: none; }
-    .content { padding: 0 var(--gutter) 4rem; }
-    .hero { padding-top: 2rem; }
-    .section { padding-top: 3.5rem; scroll-margin-top: 4.5rem; }
-    .skill-groups { column-count: 1; }
-    .job { grid-template-columns: 1fr; gap: 0.75rem; }
-    .proj { grid-template-columns: 1fr; }
-    .proj-meta { justify-content: flex-start; }
-    .link-grid { grid-template-columns: 1fr 1fr; }
-    .contact { grid-template-columns: 1fr; padding: 1.5rem; }
-    .facts dl { grid-template-columns: 8.5rem 1fr; }
-    .resume { padding: 1.5rem; }
-    .r-contact { text-align: left; }
-    .console-body { min-height: 0; }
-    .fl-row { grid-template-columns: 14.5ch 1.5ch 1fr; }
-    .status { grid-template-columns: 4.5rem 1fr; }
-    .status .when { grid-column: 2; }
-  }
-  @media (max-width: 520px) {
-    .link-grid { grid-template-columns: 1fr; }
-    .console { font-size: 0.74rem; }
-    .console-body { padding: 0.9rem 0.95rem 1rem; }
-    .side-name { font-size: 1.05rem; }
-    .side-avatar { width: 1.9rem; height: 1.9rem; }
-    .hero { display: flex; flex-direction: column; padding-top: 1.75rem; }
-    .hero-text { order: -1; margin-top: 0; }
-    .hero h1 { font-size: 1.75rem; }
-    .hero .console { margin-top: 2rem; }
-    .hero-cta { flex-direction: column; }
-    .hero-cta .btn { justify-content: center; padding: 0.8rem 1.1rem; }
-    .facts { display: none; }
-    .section { padding-top: 3rem; }
-    .resume-bar span { flex-basis: 100%; }
-    .resume-actions { width: 100%; }
-    .resume-actions .btn { flex: 1 1 auto; justify-content: center; }
-    .hero-sub { font-size: 1rem; }
-    .section-head h2 { font-size: 1.45rem; }
-    .facts dl { grid-template-columns: 1fr; }
-    .facts dt { border-top: 1px solid var(--line); padding-bottom: 0.1rem; }
-    .facts dd { border-top: none; padding-top: 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .led, .caret { animation: none; }
-    .fl-row { transition: none; }
-  }
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
@@ -764,7 +128,7 @@
           My strong lean is toward automating anything that can be automated. Most of my work ships as PowerShell: remoting tools, PDQ Deploy packages, scheduled-task installers with verification scripts, and repair utilities. When a problem is deeper — a recurring BSOD, a driver a Windows update keeps breaking, an instrument that won't talk over GPIB — I dig into event logs, minidumps, and the driver store until the root cause is found and documented.
         </p>
         <p>
-          Off the clock I build self-contained web tools (task trackers, a notes app, study consoles) and I'm working through Network+ and CCNA on the way to a network engineering role.
+          Off the clock I build web apps I actually use — a task tracker, a notes app that syncs across devices, a phone-first money tracker, study consoles — and I'm working through Network+ and CCNA on the way to a network engineering role.
         </p>
       </div>
 
@@ -777,7 +141,7 @@
           <dt>Education</dt><dd>A.S. Computer Science, Modesto Junior College (2024)</dd>
           <dt>Certifications</dt><dd>CompTIA A+ (2026) · Network+ expected Q2 2027 · CCNA expected Q4 2027</dd>
           <dt>Languages</dt><dd>English (native) · Spanish (professional working proficiency)</dd>
-          <dt>Tools I built</dt><dd>10+ internal tools and self-hosted apps in production use</dd>
+          <dt>Tools I built</dt><dd>15+ internal tools and self-hosted apps in daily use — <a href="projects.html">see the projects page</a></dd>
           <dt>Next</dt><dd>Network engineering</dd>
         </dl>
       </div>
@@ -857,7 +221,7 @@
         </div>
 
         <div class="skill-group">
-          <h3>Lab, data &amp; web <span class="n">4</span></h3>
+          <h3>Lab, data &amp; web <span class="n">5</span></h3>
           <div class="skill">
             <div class="skill-name">Lab instrument support</div>
             <div class="meter" data-level="4" role="img" aria-label="Level 4 of 5"><i></i><i></i><i></i><i></i><i></i></div>
@@ -872,6 +236,11 @@
             <div class="skill-name">HTML / CSS / JS</div>
             <div class="meter" data-level="4" role="img" aria-label="Level 4 of 5"><i></i><i></i><i></i><i></i><i></i></div>
             <div class="skill-desc">Self-contained single-file apps — IndexedDB &amp; localStorage persistence, PWAs, kiosk dashboards, study tools</div>
+          </div>
+          <div class="skill">
+            <div class="skill-name">Backend &amp; cloud</div>
+            <div class="meter" data-level="3" role="img" aria-label="Level 3 of 5"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="skill-desc">PowerShell 7 HTTP servers for local web UIs; Node/Express + Postgres on Render; Firebase Hosting &amp; Firestore; GitHub Actions deploys</div>
           </div>
           <div class="skill">
             <div class="skill-name">Security basics</div>
@@ -911,6 +280,11 @@
           <span class="chip">Fully Kiosk Browser</span>
           <span class="chip">Raspberry Pi</span>
           <span class="chip">Python</span>
+          <span class="chip">Node.js / Express</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">Render</span>
+          <span class="chip">GitHub Actions</span>
           <span class="chip">VS Code</span>
           <span class="chip">Git / GitHub</span>
           <span class="chip">Claude AI</span>
@@ -942,6 +316,7 @@
                 <li>Package and deploy software silently with PDQ Deploy — including <strong>SOLIDWORKS 2026 SP1.1</strong>, where I fixed the admin image to exclude corrupt components, resolved false-success reporting with a <code>Start-Process -Wait</code> step, and wrote a registry-based install verification script</li>
                 <li>Deployed a fleet of <strong>production work-instruction kiosks</strong>: co-developed the in-network display app with my manager, first on Raspberry Pi, then built an unattended Debian/Chromium kiosk image on mini PCs installed from a Ventoy USB in ~30 seconds of hands-on time, with site-specific ISOs and help desk runbooks</li>
                 <li>Deployed shared network printers from the domain print server to lab fleets with PDQ Deploy and cleaned up duplicate queues in bulk over <code>Invoke-Command</code></li>
+                <li>Upgraded the <strong>UPS WorldShip workgroup</strong> (admin workstation plus five remote shipping stations) from 2024 to 2026 after hours with no shipping downtime, on a shared Zebra label-printer queue from the print server</li>
               </ul>
             </div>
 
@@ -949,7 +324,9 @@
               <h4>tooling</h4>
               <ul>
                 <li>Wrote the <strong>PowerShell tooling used daily</strong> for remote administration: an Invoke-Command based remoting tool, a remote USB device scanner with a WPF grid, a lightweight Windows repair script, Chrome bookmark migration between machines, autologon management for shared production accounts, and SYSTEM scheduled-task installers with matching verification scripts</li>
-                <li>Built internal web tools for the floor and the IT desk: a tablet-based cubicle status board, a restyled shift dashboard, and a single-file tracker for shared lab account assignments</li>
+                <li>Turned those scripts into the <strong>WCM Toolbox</strong> — a PowerShell 7 script that serves a local web UI with one tile per tool (remote session, WinRM, autologon, profile removal, hardware health, drive cleanup, forced uninstall and restart) — and built the <strong>WCM IP Scanner</strong>, a browser UI that sweeps the site's subnets and keeps a MAC/hostname inventory of every device seen</li>
+                <li>Built internal web tools for the floor and the IT desk: a tablet-based cubicle status board, a restyled shift dashboard, a single-file tracker for shared lab account assignments, and <strong>Photo Wall</strong>, a second-screen slideshow that plays a user's photos on a ScreenBeam-connected TV while they work, packaged for PDQ Deploy with no console window</li>
+                <li>Proved out a <strong>Sage 100 activity dashboard</strong> — who has Sage open and whether they're idle — from a remote process check over CIM plus session idle time (in progress)</li>
                 <li>Revived a legacy Python 2.7 test-data compilation script on an air-gapped machine with an offline pip install from staged wheels</li>
               </ul>
             </div>
@@ -1015,143 +392,45 @@
       </article>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- PROJECTS (featured — the full list lives on projects.html) -->
     <section class="section" id="projects">
       <div class="section-head"><h2>Projects</h2><a class="anchor" href="#projects">#projects</a></div>
+      <p class="lede">A few of the things I've built. The full list — sixteen projects across work and personal builds, with screenshots — has its own page.</p>
 
-      <div class="proj-group">
-        <div class="proj-group-title">at WCMagnetics</div>
-
+      <div class="proj-group" style="margin-top:1.5rem">
         <div class="proj">
           <div>
             <h3>Production Work Instruction Kiosks</h3>
-            <p>Co-built with my manager — an in-network site that displays the work instructions engineers write, so production workers always have the correct build steps in front of them. First deployed on Raspberry Pi devices; then I built a repeatable kiosk image for mini PCs: an unattended Debian install that boots straight into Chromium fullscreen, delivered from a Ventoy USB with site-specific ISOs for Stockton and Mexico. Hands-on time per kiosk is about 30 seconds, with help desk runbooks and a deployment quick-start to match.</p>
+            <p>Debian/Chromium kiosks for the production floor, installed from a Ventoy USB in about 30 seconds of hands-on time, with site-specific images for Stockton and Mexico.</p>
           </div>
-          <div class="proj-meta"><span class="chip hi">Debian / Chromium</span><span class="chip">Raspberry Pi</span><span class="chip">Ventoy</span><span class="chip">production floor</span></div>
+          <div class="proj-meta"><span class="chip hi">Debian / Chromium</span><span class="chip">Ventoy</span><span class="chip">work</span></div>
         </div>
-
         <div class="proj">
           <div>
-            <h3>PowerShell Remote Administration Toolkit</h3>
-            <p>The scripts I reach for every day, all PowerShell 5.1 compatible. An Invoke-Command based remoting tool — type a computer name and drop straight into a session on that machine. A remote USB device scanner with a WPF DataGrid and click-to-copy results. <code>Repair-Windows-Lite.ps1</code> for quick client-side repairs. Chrome bookmark migration between machines over admin shares. Autologon enable/disable for shared production accounts. SYSTEM scheduled-task installers paired with verification scripts, so every deployment can prove it landed.</p>
+            <h3>WCM Toolbox &amp; IP Scanner</h3>
+            <p>PowerShell 7 scripts that serve local web UIs — one bundles every remote-support script behind a tile, the other sweeps the site's subnets and keeps a device inventory.</p>
           </div>
-          <div class="proj-meta"><span class="chip hi">PowerShell</span><span class="chip">WinRM</span><span class="chip">WPF</span><span class="chip">remote admin</span></div>
+          <div class="proj-meta"><span class="chip hi">PowerShell 7</span><span class="chip">local web UI</span><span class="chip">work</span></div>
         </div>
-
         <div class="proj">
           <div>
-            <h3>Silent Deployments — SOLIDWORKS 2026, Windows 11 25H2, Printers</h3>
-            <p>Fleet-wide packages built in PDQ Deploy. SOLIDWORKS 2026 SP1.1: fixed the admin image to exclude three corrupt components, finalized the uninstall workflow, stopped PDQ reporting success before the installer finished by wrapping it in <code>Start-Process -Wait</code>, and confirmed installs with a registry-based verification script. Windows 11 25H2: ISO mounted with <code>Mount-DiskImage</code> and run with dynamic update disabled to force offline media mode. Shared printer rollout to the lab fleet from the print server, with bulk cleanup of duplicate queues.</p>
+            <h3>My Task App</h3>
+            <p>Self-hosted task tracker with a PowerShell HTTP backend — Kanban, list and calendar views, bento dashboard with sparklines, macOS-style UI with spring animations. Runs as a PWA.</p>
           </div>
-          <div class="proj-meta"><span class="chip hi">PDQ Deploy</span><span class="chip">PowerShell</span><span class="chip">fleet deployment</span></div>
+          <div class="proj-meta"><span class="chip hi">PowerShell</span><span class="chip">PWA</span><span class="chip">personal</span></div>
         </div>
-
         <div class="proj">
           <div>
-            <h3>Lab Instrument Automation &amp; Support</h3>
-            <p>Excel VBA templates that drive Keysight LCR meters directly from the measurement sheet — started with a single LAN-connected meter and extended to a three-meter USB cascade across three PCs, plus a GPIB-controlled auto-test template with buttons injected via OOXML and a worksheet dispatcher for measurement columns. Also the support side: IO Libraries version compatibility, re-terminating a wall jack to bring a network analyzer back online, pulling firmware versions over the LXI web interface with PowerShell, and setting up PC control for a new Rigol spectrum analyzer.</p>
+            <h3>MyNotes</h3>
+            <p>OneNote-style Markdown notes synced across devices — Node/Express + Postgres on Render, offline cache in IndexedDB, page history, paragraph tags.</p>
           </div>
-          <div class="proj-meta"><span class="chip hi">Excel VBA</span><span class="chip">Keysight</span><span class="chip">GPIB / USB / LAN</span><span class="chip">test lab</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>Hard-Problem Case Files</h3>
-            <p>The investigations I'm proudest of. A lab tester's USB driver stopped loading after a Windows cumulative update pushed an enforced code-integrity policy that rejected its expired cross-certificate — fixed by removing the policy files from the EFI partition and System32. A persistent Intel graphics driver rollback traced to a stale driver-store entry and blocked from being re-offered by Windows Update. Recurring BSODs across five different bugchecks isolated to a hardware memory fault with WinDbg minidump analysis and a repeatable MemTest86 failure. Application freezes traced to redirected folders and hundreds of open SMB handles over an unstable Wi-Fi link, with a documented evidence trail.</p>
-          </div>
-          <div class="proj-meta"><span class="chip hi">diagnostics</span><span class="chip">WinDbg</span><span class="chip">MemTest86</span><span class="chip">root cause</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>Employee Onboarding Document Suite</h3>
-            <p>A complete set of new-hire IT documents on company letterhead: workstation checklist, fillable desktop and laptop setup instructions, supplemental guides, and a first-logon welcome popup written in PowerShell. Letterhead is applied as a reportlab overlay merged with pypdf, so every document comes out consistent.</p>
-          </div>
-          <div class="proj-meta"><span class="chip hi">Python</span><span class="chip">reportlab / pypdf</span><span class="chip">PowerShell</span><span class="chip">onboarding</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>Status Board, Shift Dashboard &amp; Sign-in Tracker</h3>
-            <p>Small single-file web tools for the desk and the floor. A touch-optimized cubicle status board on an Android tablet (large tap targets, swipe-to-cycle with a staged commit, auto-reverting timers, cross-tab localStorage sync). A shift dashboard restyled to the same industrial look while keeping its milestone markers, calendar, and break alerts. An editable tracker for shared lab account assignments that replaced a fragile Excel file.</p>
-          </div>
-          <div class="proj-meta"><span class="chip hi">HTML / JS</span><span class="chip">Fully Kiosk</span><span class="chip">internal tool</span></div>
+          <div class="proj-meta"><span class="chip hi">Node / Express</span><span class="chip">Postgres</span><span class="chip">personal</span></div>
         </div>
       </div>
 
-      <div class="proj-group">
-        <div class="proj-group-title">personal builds</div>
-
-        <!--
-          Card template with a screenshot (optional):
-          <div class="proj">
-            <div>
-              <h3>Project name</h3>
-              <p>Description.</p>
-              <figure class="proj-shot">
-                <img src="images/project-name.png" alt="What the screenshot shows" width="1280" height="800" loading="lazy">
-              </figure>
-            </div>
-            <div class="proj-meta">...</div>
-          </div>
-        -->
-
-        <div class="proj">
-          <div>
-            <h3>My Task App — Self-Hosted Task Tracker</h3>
-            <p>A personal task tracker with a PowerShell HTTP backend persisting JSON to a network share. Kanban, list, and calendar views, a Pomodoro timer, a dashboard with stat cards, recurring tasks, and subtasks. Runs as a Chrome PWA with a silent launcher and a scheduled task so it's up when I log in.</p>
-            <figure class="proj-shot">
-              <img src="images/flux-dashboard.png" alt="Flux task tracker dashboard: stat cards for active tasks, completion rate and streak, a seven-day completion chart, and per-project progress bars" width="1266" height="1352" loading="lazy">
-            </figure>
-          </div>
-          <div class="proj-meta"><span class="chip hi">PowerShell</span><span class="chip">HTTP backend</span><span class="chip">PWA</span><span class="chip">self-hosted</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>My Notes App — Markdown Notes, Synced Everywhere</h3>
-            <p>Started as a self-contained notes app in one HTML file, now a live site with a Node/Express backend and Postgres, so every device sees the same notebook. OneNote-style notebooks, colored sections, and subpages; Markdown with tags and wikilinks; a split edit/preview pane, PowerShell syntax highlighting, image paste, and a focus timer. IndexedDB keeps an offline copy: edits save on-device when the server is unreachable and sync when the connection returns. Login is rate-limited, and the whole stack deploys from one Render blueprint.</p>
-            <figure class="proj-shot">
-              <img src="images/mynotes.jpg" alt="MyNotes in split view: notebook sidebar, note list, and a Markdown note with its live preview" width="1920" height="1200" loading="lazy">
-            </figure>
-          </div>
-          <div class="proj-meta"><span class="chip hi">Node / Express</span><span class="chip">Postgres</span><span class="chip">IndexedDB</span><span class="chip">Markdown</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>Pocket — Phone-First Money Tracker</h3>
-            <p>An expense tracker installed on my iPhone home screen. The home screen leads with how much is <em>safe to spend</em> until the next payday, with account balances, bills due this week, budgets, and goals. A calendar shows the money left on every day, with paydays and bills on their real dates. Insights cover spending by category, income vs. spending, and a 60-day forecast. A paycheck planner moves paydays off weekends and holidays. Google sign-in with Firestore rules that keep each person's data private, offline support, and deploys to Firebase Hosting from GitHub Actions. Runs on free tiers at $0.</p>
-            <figure class="proj-shot">
-              <img src="images/pocket.jpg" alt="Pocket on three phones: the home screen with safe-to-spend, the calendar with daily balances, and the transaction list" width="1920" height="1200" loading="lazy">
-            </figure>
-          </div>
-          <div class="proj-meta"><span class="chip hi">HTML / JS</span><span class="chip">Firebase</span><span class="chip">PWA</span><span class="chip">GitHub Actions</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>CCNA 200-301 Study Console</h3>
-            <p>My own exam prep tool, built as a single HTML file with progress saved in the browser. A NOC-console layout with an SVG topology map as navigation, all six blueprint domains at exam depth, 18 guided IOS labs in a CLI simulator, a subnetting/VLSM drill generator, a blueprint-weighted timed practice exam, and spaced-repetition flashcards.</p>
-          </div>
-          <div class="proj-meta"><span class="chip hi">HTML / JS</span><span class="chip">localStorage</span><span class="chip">study tools</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>CompTIA A+ &amp; Network+ Study Hubs</h3>
-            <p>Terminal-style study hubs for A+ (the tools I passed with) and Network+ N10-009, each with a domain-weighted test engine. Plus an A+ arcade with four minigames — because drilling port numbers is more fun when it has a score.</p>
-          </div>
-          <div class="proj-meta"><span class="chip hi">HTML / JS</span><span class="chip">game dev</span><span class="chip">study tools</span></div>
-        </div>
-
-        <div class="proj">
-          <div>
-            <h3>Home Lab</h3>
-            <p>Building a home network lab from scratch for CCNA-style practice — VLANs, routing, firewalls — alongside self-hosted apps and NAS storage. Small rack, mini PCs and small-form-factor desktops, headed for a garage or closet where noise isn't a concern.</p>
-          </div>
-          <div class="proj-meta"><span class="chip hi">networking</span><span class="chip">NAS / self-hosting</span><span class="chip">in progress</span></div>
-        </div>
+      <div class="proj-cta">
+        <a href="projects.html" class="btn btn-ink">All projects <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></a>
+        <span>16 projects · filter by work or personal · screenshots included</span>
       </div>
     </section>
 
@@ -1238,6 +517,8 @@
               <li>Packaged and deployed software silently with PDQ Deploy, including SOLIDWORKS 2026 SP1.1 with admin-image fixes, an uninstall workflow, a PowerShell install wrapper, and registry-based verification; also deployed shared printers to lab fleets.</li>
               <li>Deployed production work-instruction kiosks across two sites: co-developed the display app, then built an unattended Debian/Chromium kiosk image installed from Ventoy USB in about 30 seconds of hands-on time, with help desk runbooks.</li>
               <li>Built daily PowerShell tools for the team, including an Invoke-Command remoting tool, WPF remote USB device scanner, Windows repair script, Chrome bookmark migration, shared-account autologon management, and SYSTEM scheduled-task installers with verification scripts.</li>
+              <li>Packaged those scripts as the WCM Toolbox, a PowerShell 7 script serving a local web UI with one tile per tool, and built the WCM IP Scanner, a browser-based subnet sweep that maintains a MAC/hostname device inventory.</li>
+              <li>Upgraded the UPS WorldShip workgroup (admin workstation plus five remote shipping stations) from 2024 to 2026 after hours with no shipping downtime.</li>
               <li>Supported engineering test-lab instruments from Keysight, Rigol, and Voltech over GPIB, USB, and LAN, including Excel VBA measurement templates and vendor escalations.</li>
               <li>Diagnosed hard faults: BSODs traced to failing RAM with WinDbg and MemTest86; a USB driver broken by a Windows update code-integrity policy; a recurring graphics driver rollback; and application freezes caused by folder redirection over unstable Wi-Fi.</li>
               <li>Resolved Sage 100 2024 connection and PDF-printing failures, migrated ODBC-driven reporting spreadsheets to a new Sage server, and fixed Outlook, Foxit, and Quest Desktop Authority issues.</li>
@@ -1282,7 +563,8 @@
           <h3>Selected projects</h3>
           <ul class="r-ul">
             <li><strong>Task App</strong> — Self-hosted task tracker with a PowerShell HTTP backend and JSON persistence; Kanban, list, and calendar views; Pomodoro and recurring tasks; runs as a Chrome progressive web app.</li>
-            <li><strong>Notes App</strong> — Single-file Markdown notes application with IndexedDB storage, rotating backups, wikilinks, and PowerShell syntax highlighting.</li>
+            <li><strong>MyNotes</strong> — OneNote-style Markdown notes synced across devices: Node/Express and Postgres on Render, offline cache in IndexedDB, page history, paragraph tags, and PowerShell syntax highlighting.</li>
+            <li><strong>Pocket</strong> — Phone-first money tracker on Firebase (Firestore, Hosting, Google sign-in) with safe-to-spend forecasting, a daily-balance calendar, and GitHub Actions deploys.</li>
             <li><strong>CCNA Study Console</strong> — Single-file exam-prep tool with an IOS CLI simulator, subnetting drills, a blueprint-weighted practice exam, and spaced-repetition flashcards.</li>
             <li><strong>Lab Instrument Automation</strong> — Excel VBA templates that drive Keysight LCR meters over LAN, USB, and GPIB, scaled from one meter to a three-meter cascade.</li>
           </ul>
@@ -1292,7 +574,7 @@
           <h3>Technical skills</h3>
           <ul class="r-ul">
             <li><strong>Systems &amp; endpoint administration:</strong> Windows 10/11 administration and imaging, Active Directory, Microsoft 365, Debian/Chromium kiosks, Intel NUC, Raspberry Pi, Ventoy, Splashtop RMM, Quest Desktop Authority, ProTight (ProSuite).</li>
-            <li><strong>Automation &amp; development:</strong> PowerShell 5.1 and 7, Invoke-Command/WinRM remoting, WPF, scheduled tasks, registry verification, PDQ Deploy, Python (ReportLab, pypdf), HTML/CSS/JavaScript, IndexedDB, progressive web apps, Git/GitHub, Excel/VBA.</li>
+            <li><strong>Automation &amp; development:</strong> PowerShell 5.1 and 7, Invoke-Command/WinRM remoting, WPF, scheduled tasks, registry verification, PDQ Deploy, Python (ReportLab, pypdf), HTML/CSS/JavaScript, IndexedDB, progressive web apps, Node.js/Express, PostgreSQL, Firebase, Render, GitHub Actions, Git/GitHub, Excel/VBA.</li>
             <li><strong>Networking &amp; diagnostics:</strong> TCP/IP, DNS, DHCP, static IPs, print servers, cable termination, WinDbg, MemTest86, ODBC.</li>
             <li><strong>Engineering &amp; business applications:</strong> Keysight, Rigol, and Voltech lab instruments; GPIB, USBTMC, LXI, and IO Libraries; Sage 100 2024; SOLIDWORKS 2026 deployment; Foxit PDF Editor.</li>
           </ul>
@@ -1346,7 +628,7 @@
 
     <footer>
       <span>Ramiro Herrera · <span id="year"></span></span>
-      <span>one HTML file · no frameworks · no build step</span>
+      <span>plain HTML + CSS · no frameworks · no build step</span>
     </footer>
 
   </main>
