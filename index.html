@@ -1066,10 +1066,27 @@
 
         <div class="proj">
           <div>
-            <h3>My Notes App — Single-File Markdown Notes</h3>
-            <p>A self-contained notes app in one HTML file: Markdown editing with notebooks, tags, and wikilinks; IndexedDB storage with rotating backups; PowerShell syntax highlighting; image paste, find/replace, video timestamps, and a Pomodoro timer. Ships with a Chrome <code>--app=</code> desktop installer.</p>
+            <h3>My Notes App — Markdown Notes, Synced Everywhere</h3>
+            <p>Started as a self-contained notes app in one HTML file, now a live site with a Node/Express backend and Postgres, so every device sees the same notebook. OneNote-style notebooks, colored sections, and subpages; Markdown with tags and wikilinks; a split edit/preview pane, PowerShell syntax highlighting, image paste, and a focus timer. IndexedDB keeps an offline copy: edits save on-device when the server is unreachable and sync when the connection returns. Login is rate-limited, and the whole stack deploys from one Render blueprint.</p>
+            <figure class="proj-shot">
+              <img src="images/mynotes.jpg" alt="MyNotes in split view: notebook sidebar, note list, and a Markdown note with its live preview" width="1920" height="1200" loading="lazy">
+            </figure>
           </div>
-          <div class="proj-meta"><span class="chip hi">HTML / JS</span><span class="chip">IndexedDB</span><span class="chip">Markdown</span><span class="chip">self-hosted</span></div>
+          <div class="proj-meta"><span class="chip hi">Node / Express</span><span class="chip">Postgres</span><span class="chip">IndexedDB</span><span class="chip">Markdown</span></div>
+        </div>
+
+        <div class="proj">
+          <div>
+            <h3>Pocket — Phone-First Money Tracker</h3>
+            <p>An expense tracker installed on my iPhone home screen. The home screen leads with how much is <em>safe to spend</em> until the next payday, with account balances, bills due this week, budgets, and goals. A calendar shows the money left on every day, with paydays and bills on their real dates. Insights cover spending by category, income vs. spending, and a 60-day forecast. A paycheck planner moves paydays off weekends and holidays. Google sign-in with Firestore rules that keep each person's data private, offline support, and deploys to Firebase Hosting from GitHub Actions. Runs on free tiers at $0.</p>
+            <figure class="proj-shot">
+              <img src="images/pocket.jpg" alt="Pocket on three phones: the home screen with safe-to-spend, the calendar with daily balances, and the transaction list" width="1920" height="1200" loading="lazy">
+            </figure>
+            <div class="proj-links">
+              <a href="https://github.com/xotwod197/pocket" target="_blank" rel="noopener">source</a>
+            </div>
+          </div>
+          <div class="proj-meta"><span class="chip hi">HTML / JS</span><span class="chip">Firebase</span><span class="chip">PWA</span><span class="chip">GitHub Actions</span></div>
         </div>
 
         <div class="proj">
