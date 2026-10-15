@@ -419,7 +419,7 @@
   .proj p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.6; max-width: 60ch; }
   .proj-meta { display: flex; flex-wrap: wrap; align-content: start; justify-content: flex-end; gap: 0.3rem; }
   .proj-meta .chip { font-size: 0.68rem; }
-  /* Optional per-card screenshot and demo/source links. Omit either block when a project has none. */
+  /* Optional per-card screenshot. Omit the figure when a project has none. */
   .proj-shot {
     margin-top: 0.9rem; max-width: 60ch;
     border: 1px solid var(--line); border-radius: var(--r);
@@ -427,10 +427,6 @@
   }
   .proj-shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
   .proj-shot figcaption { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-2); padding: 0.4rem 0.65rem; border-top: 1px solid var(--line); background: var(--surface); }
-  .proj-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.7rem; font-family: var(--mono); font-size: 0.76rem; }
-  .proj-links a { text-decoration: none; font-weight: 500; }
-  .proj-links a::after { content: ' \2197'; }
-  .proj-links a:hover { text-decoration: underline; }
 
   /* ─────────────────────────────────────────────
      CERTIFICATIONS — status lines
@@ -1033,7 +1029,7 @@
         <div class="proj-group-title">personal builds</div>
 
         <!--
-          Card template with a screenshot and links (both optional):
+          Card template with a screenshot (optional):
           <div class="proj">
             <div>
               <h3>Project name</h3>
@@ -1041,10 +1037,6 @@
               <figure class="proj-shot">
                 <img src="images/project-name.png" alt="What the screenshot shows" width="1280" height="800" loading="lazy">
               </figure>
-              <div class="proj-links">
-                <a href="https://xotwod197.github.io/..." target="_blank" rel="noopener">live demo</a>
-                <a href="https://github.com/xotwod197/..." target="_blank" rel="noopener">source</a>
-              </div>
             </div>
             <div class="proj-meta">...</div>
           </div>
@@ -1057,9 +1049,6 @@
             <figure class="proj-shot">
               <img src="images/flux-dashboard.png" alt="Flux task tracker dashboard: stat cards for active tasks, completion rate and streak, a seven-day completion chart, and per-project progress bars" width="1266" height="1352" loading="lazy">
             </figure>
-            <div class="proj-links">
-              <a href="https://github.com/xotwod197/flux-tracker" target="_blank" rel="noopener">source</a>
-            </div>
           </div>
           <div class="proj-meta"><span class="chip hi">PowerShell</span><span class="chip">HTTP backend</span><span class="chip">PWA</span><span class="chip">self-hosted</span></div>
         </div>
@@ -1082,9 +1071,6 @@
             <figure class="proj-shot">
               <img src="images/pocket.jpg" alt="Pocket on three phones: the home screen with safe-to-spend, the calendar with daily balances, and the transaction list" width="1920" height="1200" loading="lazy">
             </figure>
-            <div class="proj-links">
-              <a href="https://github.com/xotwod197/pocket" target="_blank" rel="noopener">source</a>
-            </div>
           </div>
           <div class="proj-meta"><span class="chip hi">HTML / JS</span><span class="chip">Firebase</span><span class="chip">PWA</span><span class="chip">GitHub Actions</span></div>
         </div>
