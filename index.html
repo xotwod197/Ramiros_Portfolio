@@ -128,7 +128,7 @@
           My strong lean is toward automating anything that can be automated. Most of my work ships as PowerShell: remoting tools, PDQ Deploy packages, scheduled-task installers with verification scripts, and repair utilities. When a problem is deeper — a recurring BSOD, a driver a Windows update keeps breaking, an instrument that won't talk over GPIB — I dig into event logs, minidumps, and the driver store until the root cause is found and documented.
         </p>
         <p>
-          Off the clock I build web apps I actually use — a task tracker, a notes app that syncs across devices, a phone-first money tracker, study consoles — and I'm working through Network+ and CCNA on the way to a network engineering role.
+          Off the clock I build web apps I actually use — a task tracker, a notes app that syncs across devices, a phone-first money tracker — and I'm working through Network+ and CCNA on the way to a network engineering role.
         </p>
       </div>
 
@@ -216,7 +216,7 @@
           <div class="skill">
             <div class="skill-name">Linux &amp; Raspberry Pi</div>
             <div class="meter" data-level="3" role="img" aria-label="Level 3 of 5"><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="skill-desc">Unattended Debian installs, Chromium kiosk builds, Ventoy boot media, Pi-based production floor displays</div>
+            <div class="skill-desc">Unattended Debian installs, Ventoy boot media, Raspberry Pi and mini-PC builds</div>
           </div>
         </div>
 
@@ -235,7 +235,7 @@
           <div class="skill">
             <div class="skill-name">HTML / CSS / JS</div>
             <div class="meter" data-level="4" role="img" aria-label="Level 4 of 5"><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="skill-desc">Self-contained single-file apps — IndexedDB &amp; localStorage persistence, PWAs, kiosk dashboards, study tools</div>
+            <div class="skill-desc">Self-contained single-file apps — IndexedDB &amp; localStorage persistence, PWAs</div>
           </div>
           <div class="skill">
             <div class="skill-name">Backend &amp; cloud</div>
@@ -276,8 +276,6 @@
           <span class="chip">Sysinternals</span>
           <span class="chip">Debian</span>
           <span class="chip">Ventoy</span>
-          <span class="chip">Chromium Kiosk</span>
-          <span class="chip">Fully Kiosk Browser</span>
           <span class="chip">Raspberry Pi</span>
           <span class="chip">Python</span>
           <span class="chip">Node.js / Express</span>
@@ -314,7 +312,6 @@
               <ul>
                 <li>Upgraded <strong>100+ computers</strong> from Windows 10 to Windows 11, then rolled out Windows 11 25H2 fleet-wide via PDQ Deploy using mounted ISO media in offline mode</li>
                 <li>Package and deploy software silently with PDQ Deploy — including <strong>SOLIDWORKS 2026 SP1.1</strong>, where I fixed the admin image to exclude corrupt components, resolved false-success reporting with a <code>Start-Process -Wait</code> step, and wrote a registry-based install verification script</li>
-                <li>Deployed a fleet of <strong>production work-instruction kiosks</strong>: co-developed the in-network display app with my manager, first on Raspberry Pi, then built an unattended Debian/Chromium kiosk image on mini PCs installed from a Ventoy USB in ~30 seconds of hands-on time, with site-specific ISOs and help desk runbooks</li>
                 <li>Deployed shared network printers from the domain print server to lab fleets with PDQ Deploy and cleaned up duplicate queues in bulk over <code>Invoke-Command</code></li>
                 <li>Upgraded the <strong>UPS WorldShip workgroup</strong> (admin workstation plus five remote shipping stations) from 2024 to 2026 after hours with no shipping downtime, on a shared Zebra label-printer queue from the print server</li>
               </ul>
@@ -325,8 +322,7 @@
               <ul>
                 <li>Wrote the <strong>PowerShell tooling used daily</strong> for remote administration: an Invoke-Command based remoting tool, a remote USB device scanner with a WPF grid, a lightweight Windows repair script, Chrome bookmark migration between machines, autologon management for shared production accounts, and SYSTEM scheduled-task installers with matching verification scripts</li>
                 <li>Turned those scripts into the <strong>WCM Toolbox</strong> — a PowerShell 7 script that serves a local web UI with one tile per tool (remote session, WinRM, autologon, profile removal, hardware health, drive cleanup, forced uninstall and restart) — and built the <strong>WCM IP Scanner</strong>, a browser UI that sweeps the site's subnets and keeps a MAC/hostname inventory of every device seen</li>
-                <li>Built internal web tools for the floor and the IT desk: a tablet-based cubicle status board, a restyled shift dashboard, a single-file tracker for shared lab account assignments, and <strong>Photo Wall</strong>, a second-screen slideshow that plays a user's photos on a ScreenBeam-connected TV while they work, packaged for PDQ Deploy with no console window</li>
-                <li>Proved out a <strong>Sage 100 activity dashboard</strong> — who has Sage open and whether they're idle — from a remote process check over CIM plus session idle time (in progress)</li>
+                <li>Built internal web tools for the floor and the IT desk: a tablet-based cubicle status board, a restyled shift dashboard, a single-file tracker for shared lab account assignments</li>
                 <li>Revived a legacy Python 2.7 test-data compilation script on an air-gapped machine with an offline pip install from staged wheels</li>
               </ul>
             </div>
@@ -400,13 +396,6 @@
       <div class="proj-group" style="margin-top:1.5rem">
         <div class="proj">
           <div>
-            <h3>Production Work Instruction Kiosks</h3>
-            <p>Debian/Chromium kiosks for the production floor, installed from a Ventoy USB in about 30 seconds of hands-on time, with site-specific images for Stockton and Mexico.</p>
-          </div>
-          <div class="proj-meta"><span class="chip hi">Debian / Chromium</span><span class="chip">Ventoy</span><span class="chip">work</span></div>
-        </div>
-        <div class="proj">
-          <div>
             <h3>WCM Toolbox &amp; IP Scanner</h3>
             <p>PowerShell 7 scripts that serve local web UIs — one bundles every remote-support script behind a tile, the other sweeps the site's subnets and keeps a device inventory.</p>
           </div>
@@ -430,7 +419,7 @@
 
       <div class="proj-cta">
         <a href="projects.html" class="btn btn-ink">All projects <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg></a>
-        <span>16 projects · filter by work or personal · screenshots included</span>
+        <span>10 projects · filter by work or personal · screenshots included</span>
       </div>
     </section>
 
@@ -459,7 +448,6 @@
           <span class="when">2024</span>
         </div>
       </div>
-      <p class="cert-note">I build my own study tools for each exam — the A+ hub, the Network+ hub, and the CCNA console above — so the prep doubles as portfolio work.</p>
     </section>
 
     <!-- RÉSUMÉ -->
@@ -515,7 +503,6 @@
             <ul class="r-ul">
               <li>Upgraded 100+ computers from Windows 10 to Windows 11; rolled out Windows 11 25H2 fleet-wide through PDQ Deploy using offline ISO media.</li>
               <li>Packaged and deployed software silently with PDQ Deploy, including SOLIDWORKS 2026 SP1.1 with admin-image fixes, an uninstall workflow, a PowerShell install wrapper, and registry-based verification; also deployed shared printers to lab fleets.</li>
-              <li>Deployed production work-instruction kiosks across two sites: co-developed the display app, then built an unattended Debian/Chromium kiosk image installed from Ventoy USB in about 30 seconds of hands-on time, with help desk runbooks.</li>
               <li>Built daily PowerShell tools for the team, including an Invoke-Command remoting tool, WPF remote USB device scanner, Windows repair script, Chrome bookmark migration, shared-account autologon management, and SYSTEM scheduled-task installers with verification scripts.</li>
               <li>Packaged those scripts as the WCM Toolbox, a PowerShell 7 script serving a local web UI with one tile per tool, and built the WCM IP Scanner, a browser-based subnet sweep that maintains a MAC/hostname device inventory.</li>
               <li>Upgraded the UPS WorldShip workgroup (admin workstation plus five remote shipping stations) from 2024 to 2026 after hours with no shipping downtime.</li>
@@ -565,7 +552,6 @@
             <li><strong>Task App</strong> — Self-hosted task tracker with a PowerShell HTTP backend and JSON persistence; Kanban, list, and calendar views; Pomodoro and recurring tasks; runs as a Chrome progressive web app.</li>
             <li><strong>MyNotes</strong> — OneNote-style Markdown notes synced across devices: Node/Express and Postgres on Render, offline cache in IndexedDB, page history, paragraph tags, and PowerShell syntax highlighting.</li>
             <li><strong>Pocket</strong> — Phone-first money tracker on Firebase (Firestore, Hosting, Google sign-in) with safe-to-spend forecasting, a daily-balance calendar, and GitHub Actions deploys.</li>
-            <li><strong>CCNA Study Console</strong> — Single-file exam-prep tool with an IOS CLI simulator, subnetting drills, a blueprint-weighted practice exam, and spaced-repetition flashcards.</li>
             <li><strong>Lab Instrument Automation</strong> — Excel VBA templates that drive Keysight LCR meters over LAN, USB, and GPIB, scaled from one meter to a three-meter cascade.</li>
           </ul>
         </div>
@@ -573,7 +559,7 @@
         <div class="r-section">
           <h3>Technical skills</h3>
           <ul class="r-ul">
-            <li><strong>Systems &amp; endpoint administration:</strong> Windows 10/11 administration and imaging, Active Directory, Microsoft 365, Debian/Chromium kiosks, Intel NUC, Raspberry Pi, Ventoy, Splashtop RMM, Quest Desktop Authority, ProTight (ProSuite).</li>
+            <li><strong>Systems &amp; endpoint administration:</strong> Windows 10/11 administration and imaging, Active Directory, Microsoft 365, Debian, Intel NUC, Raspberry Pi, Ventoy, Splashtop RMM, Quest Desktop Authority, ProTight (ProSuite).</li>
             <li><strong>Automation &amp; development:</strong> PowerShell 5.1 and 7, Invoke-Command/WinRM remoting, WPF, scheduled tasks, registry verification, PDQ Deploy, Python (ReportLab, pypdf), HTML/CSS/JavaScript, IndexedDB, progressive web apps, Node.js/Express, PostgreSQL, Firebase, Render, GitHub Actions, Git/GitHub, Excel/VBA.</li>
             <li><strong>Networking &amp; diagnostics:</strong> TCP/IP, DNS, DHCP, static IPs, print servers, cable termination, WinDbg, MemTest86, ODBC.</li>
             <li><strong>Engineering &amp; business applications:</strong> Keysight, Rigol, and Voltech lab instruments; GPIB, USBTMC, LXI, and IO Libraries; Sage 100 2024; SOLIDWORKS 2026 deployment; Foxit PDF Editor.</li>
