@@ -82,22 +82,14 @@
       <h1>Projects</h1>
       <p>Everything I've built that's worth showing — tools that run on the production floor and the IT desk at WCMagnetics, and the apps I build for myself after hours. Work projects are described at the level of a résumé; nothing internal is identified.</p>
       <div class="filter" role="group" aria-label="Filter projects">
-        <button type="button" data-filter="all" aria-pressed="true">All<span class="cnt">16</span></button>
-        <button type="button" data-filter="work" aria-pressed="false">At WCMagnetics<span class="cnt">10</span></button>
-        <button type="button" data-filter="personal" aria-pressed="false">Personal builds<span class="cnt">6</span></button>
+        <button type="button" data-filter="all" aria-pressed="true">All<span class="cnt">10</span></button>
+        <button type="button" data-filter="work" aria-pressed="false">At WCMagnetics<span class="cnt">6</span></button>
+        <button type="button" data-filter="personal" aria-pressed="false">Personal builds<span class="cnt">4</span></button>
       </div>
     </header>
 
     <div class="cards-group" data-group="work">at WCMagnetics</div>
     <div class="cards" data-group="work">
-      <article class="card" data-group="work">
-        <div class="card-body">
-          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
-          <h3>Production Work Instruction Kiosks</h3>
-          <p>Co-built with my manager — an in-network site that displays the work instructions engineers write, so production workers always have the correct build steps in front of them. First deployed on Raspberry Pi devices; then I built a repeatable kiosk image for mini PCs: an unattended Debian install that boots straight into Chromium fullscreen, delivered from a Ventoy USB with site-specific ISOs for Stockton and Mexico. Hands-on time per kiosk is about 30 seconds, with help desk runbooks and a deployment quick-start to match.</p>
-          <div class="chips"><span class="chip hi">Debian / Chromium</span><span class="chip">Raspberry Pi</span><span class="chip">Ventoy</span><span class="chip">production floor</span></div>
-        </div>
-      </article>
       <article class="card" data-group="work">
         <figure class="card-shot"><img src="images/wcm-toolbox.webp" alt="WCM Toolbox home screen: a grid of tool tiles for remote session, WinRM, autologon, cleanup and hardware checks" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
         <div class="card-body">
@@ -135,14 +127,6 @@
       <article class="card" data-group="work">
         <div class="card-body">
           <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
-          <h3>Hard-Problem Case Files</h3>
-          <p>The investigations I'm proudest of. A lab tester's USB driver stopped loading after a Windows cumulative update pushed an enforced code-integrity policy that rejected its expired cross-certificate — fixed by removing the policy files from the EFI partition and System32. A persistent Intel graphics driver rollback traced to a stale driver-store entry and blocked from being re-offered by Windows Update. Recurring BSODs across five different bugchecks isolated to a hardware memory fault with WinDbg minidump analysis and a repeatable MemTest86 failure. Application freezes traced to redirected folders and hundreds of open SMB handles over an unstable Wi-Fi link, with a documented evidence trail.</p>
-          <div class="chips"><span class="chip hi">diagnostics</span><span class="chip">WinDbg</span><span class="chip">MemTest86</span><span class="chip">root cause</span></div>
-        </div>
-      </article>
-      <article class="card" data-group="work">
-        <div class="card-body">
-          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
           <h3>Employee Onboarding Document Suite</h3>
           <p>A complete set of new-hire IT documents on company letterhead: workstation checklist, fillable desktop and laptop setup instructions, supplemental guides, and a first-logon welcome popup written in PowerShell. Letterhead is applied as a reportlab overlay merged with pypdf, so every document comes out consistent.</p>
           <div class="chips"><span class="chip hi">Python</span><span class="chip">reportlab / pypdf</span><span class="chip">PowerShell</span><span class="chip">onboarding</span></div>
@@ -154,22 +138,6 @@
           <h3>Status Board, Shift Dashboard &amp; Sign-in Tracker</h3>
           <p>Small single-file web tools for the desk and the floor. A touch-optimized cubicle status board on an Android tablet (large tap targets, swipe-to-cycle with a staged commit, auto-reverting timers, cross-tab localStorage sync). A shift dashboard restyled to the same industrial look while keeping its milestone markers, calendar, and break alerts. An editable tracker for shared lab account assignments that replaced a fragile Excel file.</p>
           <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">Fully Kiosk</span><span class="chip">internal tool</span></div>
-        </div>
-      </article>
-      <article class="card" data-group="work">
-        <div class="card-body">
-          <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
-          <h3>Photo Wall — Second-Screen Slideshow</h3>
-          <p>A PowerShell app for a user whose TV is connected to her PC over ScreenBeam: her photos play as a slideshow on the TV while she keeps working on her main screen. Packaged for PDQ Deploy from a network share with a desktop shortcut, launched with no PowerShell console window popping up.</p>
-          <div class="chips"><span class="chip hi">PowerShell</span><span class="chip">PDQ Deploy</span><span class="chip">ScreenBeam</span><span class="chip">end user</span></div>
-        </div>
-      </article>
-      <article class="card" data-group="work">
-        <div class="card-body">
-          <div class="card-kicker"><span>at WCMagnetics</span><span class="wip">in progress</span></div>
-          <h3>Sage 100 Activity Dashboard</h3>
-          <p>A tool to show who currently has Sage 100 open across the company and whether each person is actively working in it or has it open idle — so seats can be freed and support can see who's affected before touching the server. Proof of concept works: a remote process check over CIM for the Sage client, combined with session idle time from <code>quser</code>, tested against a lab PC. Next: the dashboard UI.</p>
-          <div class="chips"><span class="chip hi">PowerShell</span><span class="chip">CIM / WinRM</span><span class="chip">Sage 100</span><span class="chip">dashboard</span></div>
         </div>
       </article>
     </div>
@@ -219,22 +187,6 @@
           <h3>Pocket — Phone-First Money Tracker</h3>
           <p>An expense tracker installed on my iPhone home screen. The home screen leads with how much is <em>safe to spend</em> until the next payday, with account balances, bills due this week, budgets, and goals. A calendar shows the money left on every day, with paydays and bills on their real dates. Insights cover spending by category, income vs. spending, and a 60-day forecast. A paycheck planner moves paydays off weekends and holidays. Google sign-in with Firestore rules that keep each person's data private, offline support, and deploys to Firebase Hosting from GitHub Actions. Runs on free tiers at $0.</p>
           <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">Firebase</span><span class="chip">PWA</span><span class="chip">GitHub Actions</span></div>
-        </div>
-      </article>
-      <article class="card" data-group="personal">
-        <div class="card-body">
-          <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
-          <h3>CCNA 200-301 Study Console</h3>
-          <p>My own exam prep tool, built as a single HTML file with progress saved in the browser. A NOC-console layout with an SVG topology map as navigation, all six blueprint domains at exam depth, 18 guided IOS labs in a CLI simulator, a subnetting/VLSM drill generator, a blueprint-weighted timed practice exam, and spaced-repetition flashcards.</p>
-          <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">localStorage</span><span class="chip">study tools</span></div>
-        </div>
-      </article>
-      <article class="card" data-group="personal">
-        <div class="card-body">
-          <div class="card-kicker"><span>personal build</span><span>shipped</span></div>
-          <h3>CompTIA A+ &amp; Network+ Study Hubs</h3>
-          <p>Terminal-style study hubs for A+ (the tools I passed with) and Network+ N10-009, each with a domain-weighted test engine. Plus an A+ arcade with four minigames — because drilling port numbers is more fun when it has a score.</p>
-          <div class="chips"><span class="chip hi">HTML / JS</span><span class="chip">game dev</span><span class="chip">study tools</span></div>
         </div>
       </article>
       <article class="card" data-group="personal">
