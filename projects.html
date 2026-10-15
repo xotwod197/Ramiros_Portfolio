@@ -296,6 +296,170 @@
     }));
   });
 
+  // ── Screenshot viewer: click a card screenshot to open it large over the blurred page ──
+  (function viewer() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const lb = document.createElement('div');
+    lb.className = 'lb'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Screenshot viewer');
+    lb.innerHTML = `
+      <div class="lb-bg"></div>
+      <button class="lb-close lb-ui" type="button" aria-label="Close (Esc)"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <button class="lb-nav lb-prev lb-ui" type="button" aria-label="Previous (←)"><svg viewBox="0 0 24 24"><path d="m14.5 6-6 6 6 6"/></svg></button>
+      <button class="lb-nav lb-next lb-ui" type="button" aria-label="Next (→)"><svg viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></svg></button>
+      <figure class="lb-stage"><img class="lb-img" alt="" draggable="false"></figure>
+      <div class="lb-foot lb-ui">
+        <div class="lb-cap"><span class="lb-title"></span><span class="lb-label"></span><span class="lb-count"></span></div>
+        <div class="lb-strip" role="tablist" aria-label="Other views"></div>
+      </div>`;
+    document.body.appendChild(lb);
+    const bg = lb.querySelector('.lb-bg'), img = lb.querySelector('.lb-img'), strip = lb.querySelector('.lb-strip');
+    const title = lb.querySelector('.lb-title'), label = lb.querySelector('.lb-label'), count = lb.querySelector('.lb-count');
+    const prevBtn = lb.querySelector('.lb-prev'), nextBtn = lb.querySelector('.lb-next');
+
+    let set = [], idx = 0, open = false, fig = null, srcEl = null, lastFocus = null;
+
+    // Build the list of views for a card: every thumbnail of a gallery, or just the one screenshot
+    function viewsFor(figure) {
+      const card = figure.closest('.card');
+      const name = card ? (card.querySelector('h3') || {}).textContent || '' : '';
+      const thumbs = Array.from(figure.querySelectorAll('.gallery-thumbs button'));
+      const main = figure.querySelector(':scope > img');
+      const list = thumbs.length
+        ? thumbs.map(b => ({ src: b.querySelector('img').src, alt: b.dataset.alt || '', label: b.dataset.label || '', thumb: b }))
+        : [{ src: main.src, alt: main.alt, label: (figure.querySelector('figcaption') || {}).textContent || '', thumb: null }];
+      return { name, list, main };
+    }
+
+    // Where the big image should fly from / back to
+    function sourceRect() {
+      const v = set[idx];
+      const el = (fig && fig.querySelector(':scope > img')) || (v && v.thumb && v.thumb.querySelector('img'));
+      return el ? el.getBoundingClientRect() : null;
+    }
+
+    function layout(i, dir) {
+      idx = i;
+      const v = set[idx];
+      img.alt = v.alt; img.src = v.src;
+      label.textContent = v.label;
+      count.textContent = set.length > 1 ? (idx + 1) + ' / ' + set.length : '';
+      prevBtn.hidden = nextBtn.hidden = set.length < 2;
+      strip.querySelectorAll('button').forEach((b, j) => {
+        b.setAttribute('aria-current', j === idx);
+        if (j === idx) b.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduce.matches ? 'auto' : 'smooth' });
+      });
+      // keep the card's main screenshot in sync, like the thumbnails already do
+      if (fig && v.thumb) {
+        const main = fig.querySelector(':scope > img'), cap = fig.querySelector('figcaption');
+        main.src = v.src; main.alt = v.alt; if (cap) cap.textContent = v.label;
+        fig.querySelectorAll('.gallery-thumbs button').forEach(b => b.setAttribute('aria-pressed', b === v.thumb));
+      }
+      if (dir && !reduce.matches) {
+        img.classList.remove('swap', 'swap-prev', 'swap-next'); void img.offsetWidth;
+        img.classList.add(dir === 'prev' ? 'swap-prev' : dir === 'next' ? 'swap-next' : 'swap');
+      }
+      // warm the neighbours
+      [idx - 1, idx + 1].forEach(j => { if (set[j]) { const p = new Image(); p.src = set[j].src; } });
+    }
+
+    // Fly the image from the card into place (FLIP): start at the card's rect, spring to the centred size
+    function flyIn(from) {
+      img.classList.remove('fly', 'swap', 'swap-prev', 'swap-next');
+      img.style.transform = '';
+      const to = img.getBoundingClientRect();
+      if (!from || !to.width || reduce.matches) { img.classList.add('swap'); return; }
+      const sx = from.width / to.width, sy = from.height / to.height;
+      img.style.transition = 'none';
+      img.style.transform = `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${sx}, ${sy})`;
+      img.style.borderRadius = '0px';
+      void img.offsetWidth;
+      img.classList.add('fly');
+      img.style.transition = '';
+      img.style.transform = 'translate(0, 0) scale(1, 1)';
+      img.style.borderRadius = '';
+    }
+
+    function show(figure, startIdx) {
+      const views = viewsFor(figure);
+      fig = figure; set = views.list; srcEl = views.main;
+      title.textContent = views.name;
+      strip.innerHTML = set.map((v, j) => `<button type="button" role="tab" aria-label="${(v.label || 'View ' + (j + 1)).replace(/"/g, '&quot;')}"><img src="${v.src}" alt="" loading="lazy"></button>`).join('');
+      strip.hidden = set.length < 2;
+      strip.querySelectorAll('button').forEach((b, j) => b.addEventListener('click', () => layout(j, j < idx ? 'prev' : 'next')));
+      lastFocus = document.activeElement;
+      lb.classList.add('on'); document.body.classList.add('lb-open');
+      open = true;
+      layout(startIdx, null);
+      const go = () => {
+        const from = srcEl.getBoundingClientRect();
+        srcEl.classList.add('lb-source');
+        flyIn(from);
+        requestAnimationFrame(() => lb.classList.add('in'));
+        lb.querySelector('.lb-close').focus({ preventScroll: true });
+      };
+      if (img.complete && img.naturalWidth) go(); else { img.onload = () => { img.onload = null; go(); }; }
+    }
+
+    function close() {
+      if (!open) return;
+      open = false;
+      lb.classList.add('out'); lb.classList.remove('in');
+      const to = sourceRect(), from = img.getBoundingClientRect();
+      const finish = () => {
+        lb.classList.remove('on', 'out', 'in');
+        img.classList.remove('fly'); img.style.transform = ''; img.style.borderRadius = ''; img.removeAttribute('src');
+        if (srcEl) srcEl.classList.remove('lb-source');
+        document.body.classList.remove('lb-open');
+        if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+        fig = null; srcEl = null; set = [];
+      };
+      if (to && from.width && !reduce.matches) {
+        img.classList.remove('swap', 'swap-prev', 'swap-next');
+        img.classList.add('fly');
+        img.style.transform = `translate(${to.left - from.left}px, ${to.top - from.top}px) scale(${to.width / from.width}, ${to.height / from.height})`;
+        img.style.borderRadius = '0px';
+        img.style.boxShadow = 'none';
+        let done = false;
+        const end = () => { if (done) return; done = true; img.style.boxShadow = ''; finish(); };
+        img.addEventListener('transitionend', end, { once: true });
+        setTimeout(end, 700);
+      } else finish();
+    }
+
+    const step = d => { if (set.length < 2) return; layout((idx + d + set.length) % set.length, d < 0 ? 'prev' : 'next'); };
+    prevBtn.addEventListener('click', e => { e.stopPropagation(); step(-1); });
+    nextBtn.addEventListener('click', e => { e.stopPropagation(); step(1); });
+    lb.querySelector('.lb-close').addEventListener('click', close);
+    bg.addEventListener('click', close);
+    lb.querySelector('.lb-stage').addEventListener('click', e => { if (e.target === e.currentTarget) close(); });
+    document.addEventListener('keydown', e => {
+      if (!open) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    });
+    // swipe on touch screens
+    let tx = null, ty = null;
+    lb.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') { tx = e.clientX; ty = e.clientY; } }, { passive: true });
+    lb.addEventListener('pointerup', e => {
+      if (tx === null) return;
+      const dx = e.clientX - tx, dy = e.clientY - ty; tx = ty = null;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+      else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) close();
+    }, { passive: true });
+    window.addEventListener('resize', () => { if (open) { img.style.transform = ''; img.classList.remove('fly'); } });
+
+    // the main screenshot of every card opens the viewer; thumbnails keep swapping the main image
+    document.querySelectorAll('.card-shot > img').forEach(main => {
+      main.addEventListener('click', () => {
+        const figure = main.closest('.card-shot');
+        const thumbs = Array.from(figure.querySelectorAll('.gallery-thumbs button'));
+        const i = Math.max(0, thumbs.findIndex(b => b.getAttribute('aria-pressed') === 'true'));
+        show(figure, thumbs.length ? i : 0);
+      });
+    });
+  })();
+
   // ── Filter: All / Work / Personal (remembered in the URL hash) ──
   (function filter() {
     const buttons = Array.from(document.querySelectorAll('.filter button'));
