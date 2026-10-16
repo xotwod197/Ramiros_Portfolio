@@ -77,6 +77,9 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   follows the scrollspy section; `projects.html` keeps the static teal border. Every motion is
   switched off under `prefers-reduced-motion`; print layout unaffected. All in the MOTION block
   of `site.css`.
+- **Text wrapping:** hyphenated words never split across lines (the `.nw` script at the bottom of
+  each page handles it automatically; keep it when editing). Don't use `background-attachment:
+  fixed`; put fixed backgrounds on a `position: fixed` layer.
 - **Cache-busting:** the `site.css` / `glass.css` links carry `?v=YYYYMMDD`; bump it whenever
   either stylesheet changes so visitors don't get old CSS with new HTML.
 - **Constraints:** no external dependencies besides Google Fonts; any PowerShell shown must be
@@ -119,6 +122,15 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
+
+### 2026-10-16, night (home PC via Claude, Projects)
+- Text looked cut off: hyphenated words split across lines ("56-" / "port", "auto-" / "start",
+  4–8 per page). A small script on both pages wraps every hyphenated word in `<span class="nw">`
+  (`white-space: nowrap`), skipping code and the console; `text-wrap: pretty` on bullets and
+  paragraphs. Also moved the bloom wallpaper from body `background-attachment: fixed` to a fixed
+  `body::before` layer (fixed backgrounds make Chrome repaint on scroll, which can leave text
+  half-drawn). Checked 390–1920px: no overflow, no hyphen splits. CSS `?v=` bumped; résumé PDF
+  regenerated (still 2 pages).
 
 ### 2026-10-16, later (home PC via Claude, Projects)
 - Company name: "WCMagnetics" → "West Coast Magnetics" in the console Employer line, hero

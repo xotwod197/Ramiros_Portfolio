@@ -15,15 +15,19 @@
     --surface-2: rgba(14, 26, 43, 0.05);
   }
 
-  /* Wallpaper: Windows 11 light "bloom" — soft blue petals of light, fixed behind everything */
-  body {
+  /* Wallpaper: Windows 11 light "bloom" — soft blue petals of light, fixed behind everything.
+     Painted on a fixed layer instead of body `background-attachment: fixed`, which makes Chrome
+     repaint the whole page on scroll and can leave text partly drawn (looks cut off). */
+  body { background: #eef3f9; }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
     background:
       radial-gradient(48vw 40vw at 78% 62%, rgba(0, 103, 192, 0.26), transparent 62%),
       radial-gradient(38vw 34vw at 92% 30%, rgba(96, 165, 250, 0.26), transparent 60%),
       radial-gradient(50vw 40vw at 55% 95%, rgba(129, 140, 248, 0.16), transparent 60%),
       radial-gradient(55vw 45vw at 0% 0%, rgba(15, 118, 110, 0.12), transparent 60%),
       linear-gradient(180deg, #f3f6fb 0%, #e9eff8 100%);
-    background-attachment: fixed;
+    transform: translateZ(0);
   }
 
   .glass, .side, .facts, .status-list, .resume, .contact, .link, .proj-shot, .card {
@@ -119,5 +123,6 @@
 
   @media print {
     body { background: #fff; }
+    body::before { display: none; }
     .resume { background: none; box-shadow: none; border: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
   }

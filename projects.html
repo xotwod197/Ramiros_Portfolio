@@ -14,20 +14,20 @@
 <meta property="og:description" content="Endpoint deployment, PowerShell automation, lab instrument support, and networking for a two-site manufacturer. CompTIA A+; Network+ and CCNA in progress. Stockton, CA.">
 <meta property="og:url" content="https://xotwod197.github.io/Ramiros_Portfolio/projects.html">
 <link rel="canonical" href="https://xotwod197.github.io/Ramiros_Portfolio/projects.html">
-<meta property="og:image" content="https://xotwod197.github.io/Ramiros_Portfolio/og-image.png?v=20261016">
+<meta property="og:image" content="https://xotwod197.github.io/Ramiros_Portfolio/og-image.png?v=20261016b">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Ramiro Herrera, IT Systems Administrator and Network Support, shown in a PowerShell console">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xotwod197.github.io/Ramiros_Portfolio/og-image.png?v=20261016">
+<meta name="twitter:image" content="https://xotwod197.github.io/Ramiros_Portfolio/og-image.png?v=20261016b">
 <meta name="twitter:image:alt" content="Ramiro Herrera, IT Systems Administrator and Network Support, shown in a PowerShell console">
 <meta name="twitter:title" content="Projects — Ramiro Herrera">
 <meta name="twitter:description" content="Endpoint deployment, PowerShell automation, lab instrument support, and networking. Stockton, CA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=20261016">
-<link rel="stylesheet" href="glass.css?v=20261016">
+<link rel="stylesheet" href="site.css?v=20261016b">
+<link rel="stylesheet" href="glass.css?v=20261016b">
 </head>
 <body>
 
@@ -496,6 +496,35 @@
     buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.filter)));
     const h = location.hash.slice(1);
     apply(h === 'work' || h === 'personal' ? h : 'all');
+  })();
+</script>
+<script>
+  // ── Keep hyphenated words together ("56-port", "code-integrity", "auto-start") ──
+  // Browsers break lines at hyphens, which leaves half a word at the end of a line and looks
+  // cut off. Wrap each hyphenated word in a no-wrap span so it moves to the next line whole.
+  (function keepHyphenatedWords() {
+    const re = /[A-Za-z0-9+.#/]+(?:-[A-Za-z0-9+.#/]+)+/g;
+    const skip = 'script, style, code, pre, .console, .nw, svg';
+    const walker = document.createTreeWalker(document.querySelector('main') || document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (n.parentElement.closest(skip) || !/[A-Za-z0-9]-[A-Za-z0-9]/.test(n.nodeValue)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+      const frag = document.createDocumentFragment();
+      let last = 0;
+      n.nodeValue.replace(re, (m, i) => {
+        if (m.length > 28) return m;               // very long tokens may still wrap on phones
+        frag.append(n.nodeValue.slice(last, i));
+        const s = document.createElement('span');
+        s.className = 'nw'; s.textContent = m;
+        frag.append(s);
+        last = i + m.length;
+        return m;
+      });
+      frag.append(n.nodeValue.slice(last));
+      n.replaceWith(frag);
+    });
   })();
 </script>
 </body>

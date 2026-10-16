@@ -64,6 +64,9 @@
     border-radius: 3px;
     padding: 0.05em 0.35em;
   }
+  /* Hyphenated words are wrapped in .nw by a small script so they never split across lines. */
+  .nw { white-space: nowrap; }
+  .duty li, .r-ul li, .r-p, .skill-desc, .job-summary, .proj p, .card p, .hero-sub, .lede { text-wrap: pretty; }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   /* ─────────────────────────────────────────────
