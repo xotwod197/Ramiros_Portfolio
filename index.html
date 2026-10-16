@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="glass.css">
 </head>
 <body>
 
@@ -742,11 +743,35 @@
     const sections = Object.keys(byId).map(id => document.getElementById(id)).filter(Boolean);
     let current = null;
 
+    // One pill behind the links that slides to whichever section is current.
+    const list = document.querySelector('.side-nav');
+    const pill = document.createElement('span');
+    pill.className = 'nav-pill';
+    pill.setAttribute('aria-hidden', 'true');
+    list.prepend(pill);
+    list.classList.add('has-pill');
+
+    function movePill() {
+      const a = byId[current];
+      if (!a || !a.offsetWidth) { pill.classList.remove('on'); return; }
+      pill.style.width = a.offsetWidth + 'px';
+      pill.style.height = a.offsetHeight + 'px';
+      pill.style.transform = 'translate(' + a.offsetLeft + 'px,' + a.offsetTop + 'px)';
+      pill.classList.add('on');
+    }
+    // Re-measure when the layout changes (window resize, phone menu opening).
+    new ResizeObserver(() => {
+      pill.classList.remove('ready');
+      movePill();
+      requestAnimationFrame(() => pill.classList.add('ready'));
+    }).observe(list);
+
     function setCurrent(id) {
       if (id === current) return;
       current = id;
       links.forEach(a => a.removeAttribute('aria-current'));
       if (byId[id]) byId[id].setAttribute('aria-current', 'true');
+      movePill();
     }
 
     const obs = new IntersectionObserver(entries => {
