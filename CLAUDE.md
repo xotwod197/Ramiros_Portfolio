@@ -123,6 +123,13 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 
 ## Changelog (newest first)
 
+### 2026-10-16 (work PC via Claude)
+- MyNotes card: five new screenshots from the updated app (glass note cards, resizable columns,
+  quick delete / right-click menu, Find Tags, Settings with the title-bar colour row). Shot from a
+  demo notebook with generic study/IT content — no internal hostnames, no retired projects.
+  `mynotes-menu.webp` added; the four existing files replaced in place. Card text gained one
+  sentence on resizing, quick delete and colours. No CSS change, so no `?v=` bump.
+
 ### 2026-10-16, night (home PC via Claude, Projects)
 - Text looked cut off: hyphenated words split across lines ("56-" / "port", "auto-" / "start",
   4–8 per page). A small script on both pages wraps every hyphenated word in `<span class="nw">`
