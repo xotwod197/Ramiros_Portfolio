@@ -17,7 +17,7 @@ Ramiro Herrera's personal portfolio. Static site, GitHub Pages, repo `xotwod197/
 branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfolio/
 
 - Headline on the site and résumé: **"IT Systems Administrator | Network Support"**. Job title in
-  Experience stays **Help Desk Technician** at WCMagnetics (full-time); Target General
+  Experience stays **Help Desk Technician** at West Coast Magnetics (full-time); Target General
   Merchandise Expert (part-time). No schedule days.
 - Public handles: GitHub `xotwod197`, LinkedIn `ramirooherrera`.
 - No custom domain yet (`ramiroomarherrera.com` was tried in Pages settings without owning it;
@@ -85,6 +85,10 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 
 ## Content rules — these are firm
 
+- **Company name:** the employer is **West Coast Magnetics** — use the full name wherever there's
+  room (console Employer line, hero intro, About, key facts, Experience, résumé, projects intro).
+  **WCMagnetics** is fine only where space is tight: sidebar subtitle, the "At WCMagnetics" filter,
+  card kickers and group labels.
 - **Naming in public:** the task tracker is **"My Task App"** / "Task App" (never "Flux"); the
   notes app is **"MyNotes"** / "my notes app" (never "WCM Notes"); the help-desk tool is
   **"ProTight (ProSuite)"** (not ConnectWise ProSuite).
@@ -115,6 +119,12 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
+
+### 2026-10-16, later (home PC via Claude, Projects)
+- Company name: "WCMagnetics" → "West Coast Magnetics" in the console Employer line, hero
+  intro, About, key facts, Experience, résumé and the projects-page intro; short form kept in the
+  sidebar subtitle, filter button, card kickers and group label. Résumé PDF regenerated
+  (2 pages). Share image doesn't name the company, so unchanged. Rule added under Content rules.
 
 ### 2026-10-16 (home PC via Claude, Projects)
 - Share image `og-image.png` redone in the Windows 11 style: bloom wallpaper behind a Windows
