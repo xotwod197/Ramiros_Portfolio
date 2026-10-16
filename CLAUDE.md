@@ -32,7 +32,7 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 | `site.css` | Shared stylesheet for both pages — design tokens, layout, motion, print rules. |
 | `glass.css` | Windows 11 (Fluent) glass layer loaded after `site.css` on both pages — wallpaper, frosted panels, rounded/pill shapes. |
 | `ramiro-herrera-resume.pdf` | Downloadable résumé, **regenerated from `index.html#resume`** whenever the résumé changes so the two never drift. Linked next to the Print / Save as PDF button. |
-| `og-image.png` | 1200×630 share preview. |
+| `og-image.png` | 1200×630 share preview, Windows 11 style (PowerShell window on bloom wallpaper). |
 | `images/` | Profile photo + project screenshots (`.webp` preferred). No duplicate image files. |
 | `.github/screenshots/` | Before/after shots used in PR descriptions only. |
 | `README.md` | Public description of the site, files, editing and deployment. |
@@ -117,6 +117,10 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 ## Changelog (newest first)
 
 ### 2026-10-16 (home PC via Claude, Projects)
+- Share image `og-image.png` redone in the Windows 11 style: bloom wallpaper behind a Windows
+  PowerShell window (minimize / maximize / close), name, headline, focus, certs, site URL.
+  `og:image` / `twitter:image` URLs now end in `?v=YYYYMMDD` so LinkedIn and others refetch;
+  bump it whenever the image changes.
 - Windows 11 restyle (approved from a preview in `Documents\Websites\Portfolio-windows-preview\`):
   console title bar now Windows PowerShell with minimize / maximize / close instead of Mac dots;
   bloom-blue wallpaper, 12px Fluent corners, Windows 11 Settings-style nav indicator. Changed
