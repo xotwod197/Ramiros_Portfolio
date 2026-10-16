@@ -86,6 +86,12 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 ## Changelog (newest first)
 
 ### 2026-10-15
+- Home + résumé: added hardware replacement, printers / Zebra label printers, barcode scanners,
+  digital signage (dashboards and status boards on floor TVs/tablets) and client-side networking
+  (DHCP, DNS, static IP) — new "hardware, printers & floor devices" duty group, new "Printers,
+  scanners & signage" skill, résumé bullets and skills line. Tools chips: 10 highlighted (added
+  Microsoft Office 365, Active Directory, Windows 11, "DHCP, DNS, Static IP", TCP/IP networking,
+  Zebra, barcode scanners, digital signage). Headline unchanged. Résumé PDF regenerated (2 pages).
 - `cb3d3a5` Projects: draggable, scrollable thumbnail strips.
 - `6f54ce9` Projects: restored the Lab Instrument and Onboarding cards (dropped by mistake in
   the previous commit).
