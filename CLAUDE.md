@@ -36,10 +36,16 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 | `.github/screenshots/` | Before/after shots used in PR descriptions only. |
 | `README.md` | Public description of the site, files, editing and deployment. |
 
-## Where things live (work PC)
+## Where things live
 
-- **Git clone:** `C:\My Apps\Ramiro's Portfolio\` — edit here, commit, push. GitHub Pages
+- **Work PC git clone:** `C:\My Apps\Ramiro's Portfolio\` — edit here, commit, push. GitHub Pages
   rebuilds `main` automatically.
+- **Home PC git clone:** `C:\Users\miroh\Documents\Websites\Portfolio\` (cloned 2026-10-15).
+  Ramiro pushes from PowerShell there (`git push origin main`); no GitHub Desktop on this PC.
+- `IMG_0745.JPG` in the home clone is a local-only source photo — it is in `.git/info/exclude`
+  and must never be committed. The site photo is `images/profile.jpg`.
+- Job-tailored previews live **outside** the repo (in `Documents\Websites\`) so they can never
+  be pushed.
 - Two Claude accounts are used (work + home). Neither can see the other's chat history — this
   file is the shared memory.
 
@@ -79,19 +85,33 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   address / PO box, `www.wcmagnetics.com` and portal links — including in footers and letterhead.
   Demo data where possible.
 - **Résumé stays consistent with the site.** Two pages is fine. Regenerate the PDF after any
-  résumé edit.
+  résumé edit. (Home PC method: headless Chromium print of `index.html#resume`, Letter, scale
+  0.83, margins 0.45in top/bottom and 0.55in sides, pages 1–2.)
+- When tailoring for a job, build a preview copy outside the repo first; only change the live
+  site once Ramiro approves.
 - Home page shows only a short featured teaser (WCM Toolbox & IP Scanner, My Task App, MyNotes);
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
 
-### 2026-10-15
-- Home + résumé: added hardware replacement, printers / Zebra label printers, barcode scanners,
+### 2026-10-15 (home PC)
+- Added this home-PC clone and the notes above; this changelog entry.
+- `55eaa3e` Home + résumé: added hardware replacement, printers / Zebra label printers, barcode scanners,
   digital signage (dashboards and status boards on floor TVs/tablets) and client-side networking
   (DHCP, DNS, static IP) — new "hardware, printers & floor devices" duty group, new "Printers,
   scanners & signage" skill, résumé bullets and skills line. Tools chips: 10 highlighted (added
   Microsoft Office 365, Active Directory, Windows 11, "DHCP, DNS, Static IP", TCP/IP networking,
-  Zebra, barcode scanners, digital signage). Headline unchanged. Résumé PDF regenerated (2 pages).
+  Zebra, barcode scanners, digital signage). Headline unchanged. Résumé PDF regenerated (2 pages): to fit, the two
+  PowerShell-tools bullets were merged into the WCM Toolbox bullet, the "Engineering & business
+  applications" skills line was dropped, and Languages was shortened to one line.
+- A job-tailored version with a different title was previewed but **not** adopted — Ramiro
+  wants the site kept original, headline unchanged.
+- LinkedIn (separate from the site, updated by Claude in Chrome): Help Desk Technician
+  description and ~20 skills added on 2026-10-09; that description still mentions the removed
+  work-instruction kiosks and needs a rewrite to match these rules. A mistaken "Ivanti" skill
+  should be deleted.
+
+### 2026-10-15 (work PC)
 - `cb3d3a5` Projects: draggable, scrollable thumbnail strips.
 - `6f54ce9` Projects: restored the Lab Instrument and Onboarding cards (dropped by mistake in
   the previous commit).
