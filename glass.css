@@ -1,10 +1,10 @@
   /* ─────────────────────────────────────────────
-     GLASS — macOS-app look layered on top of site.css
-     Soft wallpaper, frosted panels, rounded shapes, pill buttons.
+     GLASS — Windows 11 (Fluent) look layered on top of site.css
+     Bloom wallpaper, Mica/acrylic frosted panels, rounded corners, pill buttons.
      ───────────────────────────────────────────── */
   :root {
-    --r: 16px;
-    --r-sm: 10px;
+    --r: 12px;
+    --r-sm: 8px;
     --glass: rgba(255, 255, 255, 0.62);
     --glass-strong: rgba(255, 255, 255, 0.78);
     --glass-edge: rgba(255, 255, 255, 0.75);
@@ -15,13 +15,14 @@
     --surface-2: rgba(14, 26, 43, 0.05);
   }
 
-  /* Wallpaper: pale sky with soft teal / blue / warm light, fixed behind everything */
+  /* Wallpaper: Windows 11 light "bloom" — soft blue petals of light, fixed behind everything */
   body {
     background:
-      radial-gradient(60vw 50vw at 8% 0%, rgba(15, 118, 110, 0.20), transparent 60%),
-      radial-gradient(55vw 45vw at 100% 12%, rgba(59, 130, 246, 0.18), transparent 60%),
-      radial-gradient(60vw 50vw at 70% 100%, rgba(246, 211, 101, 0.20), transparent 60%),
-      linear-gradient(180deg, #eef3f7 0%, #e7edf3 100%);
+      radial-gradient(48vw 40vw at 78% 62%, rgba(0, 103, 192, 0.26), transparent 62%),
+      radial-gradient(38vw 34vw at 92% 30%, rgba(96, 165, 250, 0.26), transparent 60%),
+      radial-gradient(50vw 40vw at 55% 95%, rgba(129, 140, 248, 0.16), transparent 60%),
+      radial-gradient(55vw 45vw at 0% 0%, rgba(15, 118, 110, 0.12), transparent 60%),
+      linear-gradient(180deg, #f3f6fb 0%, #e9eff8 100%);
     background-attachment: fixed;
   }
 
@@ -40,7 +41,7 @@
       height: calc(100vh - 2rem);
       margin: 1rem 0 1rem 1rem;
       padding: 1.75rem 1.25rem 1.5rem;
-      border-radius: 22px;
+      border-radius: 12px;
       border-right: 1px solid var(--glass-edge);
     }
     .content { padding-left: clamp(1.5rem, 3vw, 3rem); }
@@ -48,20 +49,30 @@
   .side-avatar { border: 2px solid #fff; box-shadow: 0 4px 12px -4px rgba(14, 26, 43, 0.3); }
   .side-nav a { border-radius: var(--r-sm); margin-left: 0; border-left: none; padding-left: 0.65rem; }
   .side-nav a:hover { background: rgba(14, 26, 43, 0.05); }
-  .side-nav a[aria-current="true"] { border-radius: var(--r-sm); background: rgba(15, 118, 110, 0.12); }
-  .side-nav.has-pill a[aria-current="true"] { background: transparent; }
-  .nav-pill, .nav-pill.on { border-radius: var(--r-sm) !important; border-left: none; background: rgba(15, 118, 110, 0.13); box-shadow: inset 0 0 0 1px rgba(15, 118, 110, 0.10); }
+  .side-nav a[aria-current="true"] { border-radius: var(--r-sm); }
+  .side-nav.has-pill a[aria-current="true"] { background: transparent; box-shadow: none; }
+  .nav-pill, .nav-pill.on { border-radius: var(--r-sm) !important; border-left: none; background: rgba(14, 26, 43, 0.06); box-shadow: none; }
+  .nav-pill::before {
+    content: ''; position: absolute; left: 0; top: 50%;
+    width: 3px; height: 16px; margin-top: -8px; border-radius: 3px;
+    background: var(--accent);
+    transition: transform 0.5s var(--ease-spring);
+  }
+  .nav-pill.moving::before { transform: scaleY(1.6); transition-duration: 0.18s; }
+  .side-nav a[aria-current="true"] { background: rgba(14, 26, 43, 0.06); box-shadow: inset 3px 0 0 var(--accent); }
   .side-links a { border-radius: 50%; background: var(--glass-strong); border-color: var(--glass-edge); box-shadow: 0 1px 2px rgba(14, 26, 43, 0.06); }
   .side-links a:hover { border-color: var(--glass-edge); color: var(--accent-ink); }
 
-  /* Console: a macOS window with traffic lights */
-  .console { border-radius: 14px; border: 1px solid rgba(1, 36, 86, 0.6); box-shadow: 0 30px 60px -28px rgba(1, 36, 86, 0.55), 0 0 0 0.5px rgba(255,255,255,0.2) inset; }
-  .console-bar { padding: 0.6rem 0.9rem; }
-  .console-bar .dots { gap: 8px; }
-  .console-bar .dots i { width: 12px; height: 12px; }
-  .console-bar .dots i:nth-child(1) { background: #ff5f57; }
-  .console-bar .dots i:nth-child(2) { background: #febc2e; }
-  .console-bar .dots i:nth-child(3) { background: #28c840; }
+  /* Console: a Windows 11 PowerShell window — icon + title on the left, caption buttons on the right */
+  .console { border-radius: 8px; border: 1px solid rgba(1, 36, 86, 0.6); box-shadow: 0 30px 60px -28px rgba(1, 36, 86, 0.55), 0 0 0 0.5px rgba(255,255,255,0.2) inset; }
+  .console-bar { padding: 0 0 0 0.8rem; height: 2.1rem; font-family: var(--sans); font-size: 0.76rem; color: var(--console-ink); }
+  .console-title { display: inline-flex; align-items: center; gap: 0.55rem; }
+  .ps-ico { width: 15px; height: 15px; flex: none; }
+  .win-ctrls { display: flex; align-self: stretch; }
+  .win-ctrls i { width: 2.9rem; display: grid; place-items: center; color: var(--console-ink); transition: background 0.15s var(--ease-out), color 0.15s var(--ease-out); }
+  .win-ctrls svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1; }
+  .win-ctrls i:hover { background: rgba(255, 255, 255, 0.10); }
+  .win-ctrls i.close:hover { background: #c42b1c; color: #fff; }
 
   /* Pill buttons and chips */
   .btn { border-radius: 999px; padding: 0.66rem 1.25rem; }
@@ -80,11 +91,11 @@
   .facts-title { background: rgba(255, 255, 255, 0.45); border-bottom-color: var(--glass-line); }
   .facts dt { background: rgba(255, 255, 255, 0.35); }
   .contact { border-left: 1px solid var(--glass-edge); }
-  .link { border-radius: 18px; }
+  .link { border-radius: var(--r); }
   .link svg { width: 34px; height: 34px; padding: 7px; border-radius: 50%; background: rgba(15, 118, 110, 0.10); color: var(--accent-ink); }
   .section-head { border-bottom-color: var(--glass-line); }
   .skill-group h3, .proj-group-title, .cards-group { border-bottom-color: var(--glass-line); }
-  .card { border-radius: 20px; }
+  .card { border-radius: var(--r); }
   .card-shot { border-bottom-color: var(--glass-line); background: transparent; }
   .card-shot figcaption, .gallery-thumbs, .proj-shot figcaption { background: transparent; }
   .gallery-thumbs button { border-radius: 8px; }
@@ -94,11 +105,13 @@
     .side {
       margin: 0.5rem 0.5rem 0;
       top: 0.5rem;
-      border-radius: 20px;
+      border-radius: 12px;
       padding: 0.6rem 0.9rem;
     }
     .side-nav a { padding: 0.7rem 0.75rem; }
   }
+
+  @media (prefers-reduced-motion: reduce) { .nav-pill::before { transition: none; } .nav-pill.moving::before { transform: none; } }
 
   @media (prefers-reduced-transparency: reduce) {
     .side, .facts, .status-list, .resume, .contact, .link, .proj-shot, .card, .btn-line { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }

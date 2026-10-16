@@ -30,7 +30,7 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 | `index.html` | Home: PowerShell-console hero, About, Skills, Experience, short featured-projects teaser, Certifications & education, printable Résumé section, Links, Contact. |
 | `projects.html` | All projects with screenshot galleries. Filter All / At WCMagnetics / Personal builds (kept in the URL hash, e.g. `projects.html#work`). |
 | `site.css` | Shared stylesheet for both pages — design tokens, layout, motion, print rules. |
-| `glass.css` | macOS-style glass layer loaded after `site.css` on both pages — wallpaper, frosted panels, rounded/pill shapes. |
+| `glass.css` | Windows 11 (Fluent) glass layer loaded after `site.css` on both pages — wallpaper, frosted panels, rounded/pill shapes. |
 | `ramiro-herrera-resume.pdf` | Downloadable résumé, **regenerated from `index.html#resume`** whenever the résumé changes so the two never drift. Linked next to the Print / Save as PDF button. |
 | `og-image.png` | 1200×630 share preview. |
 | `images/` | Profile photo + project screenshots (`.webp` preferred). No duplicate image files. |
@@ -58,14 +58,17 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 - Phone layout: menu button, headline first, shorter page, tighter console block.
 - Projects page: Quick Look / Apple Photos-style screenshot viewer (large image over the blurred
   page, filmstrip of the other views, spring open/close), draggable + scrollable thumbnail strips.
-- **Glass look (adopted 2026-10-15, Ramiro loves it):** macOS-app feel — soft fixed wallpaper
-  (pale sky with teal / blue / warm light), frosted-glass panels (`backdrop-filter` blur +
-  saturate, white edge, soft shadow), rounded not boxy: panels 16–22px, buttons / chips / filters
-  pill-shaped, sidebar icons circular. Desktop sidebar is a floating rounded glass panel; phone
-  header is a floating glass bar. Console is a Mac window with red / yellow / green dots (still
-  PowerShell inside). Nav current section = soft rounded teal highlight. Plain white fallback
-  under `prefers-reduced-transparency`; print stays plain. All in `glass.css`. Previewed first in
-  `Documents\Websites\Portfolio-glass-preview\` (outside the repo).
+- **Glass look — Windows 11 Fluent (adopted 2026-10-16):** Ramiro's experience is Windows, so the
+  site leans Windows, not Mac, while keeping the Apple-like polish (glass, springs, pill buttons).
+  Windows 11 light "bloom" blue wallpaper (fixed), Mica/acrylic frosted panels (`backdrop-filter`
+  blur + saturate, white edge, soft shadow), Windows-style rounded corners (panels 12px, nav items
+  8px, console window 8px). Buttons / chips / filters stay pill-shaped, sidebar icons circular.
+  Console = Windows PowerShell window: PS icon + title left, minimize / maximize / close right
+  (close hovers red). **No Mac traffic-light dots.** Nav current section = Windows 11 Settings
+  style: soft grey tint + short teal bar on the left that stretches while the pill slides.
+  Desktop sidebar is a floating rounded glass panel; phone header a floating glass bar. Plain
+  white fallback under `prefers-reduced-transparency`; print stays plain. All in `glass.css`.
+  (A macOS version came first on 2026-10-15 and was replaced.)
 - **Motion (Oct 2026):** subtle, Apple-feel but not obviously Apple. Spring easing
   (`--ease-spring`, reuses `--lb-spring`) for movement, `--ease-out` for colour/shadow. Hover =
   small lift (buttons 1px, sidebar icons 2px, link cards 3px) + soft `--shadow-lift`; lifts only
@@ -74,6 +77,8 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   follows the scrollspy section; `projects.html` keeps the static teal border. Every motion is
   switched off under `prefers-reduced-motion`; print layout unaffected. All in the MOTION block
   of `site.css`.
+- **Cache-busting:** the `site.css` / `glass.css` links carry `?v=YYYYMMDD`; bump it whenever
+  either stylesheet changes so visitors don't get old CSS with new HTML.
 - **Constraints:** no external dependencies besides Google Fonts; any PowerShell shown must be
   **PS 5.1 compatible**; keep anchor IDs `#about #skills #experience #projects #certifications
   #resume #links #contact`.
@@ -110,6 +115,17 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
+
+### 2026-10-16 (home PC via Claude, Projects)
+- Windows 11 restyle (approved from a preview in `Documents\Websites\Portfolio-windows-preview\`):
+  console title bar now Windows PowerShell with minimize / maximize / close instead of Mac dots;
+  bloom-blue wallpaper, 12px Fluent corners, Windows 11 Settings-style nav indicator. Changed
+  `glass.css` and the console markup in `index.html`. No content or résumé changes.
+- Nav highlight fix: on the live site the sliding pill sat below the nav list (under Contact).
+  Cause: a cached old `site.css` with the new script, so the pill measured from the sidebar
+  instead of the list. Pill now measures against the list with `getBoundingClientRect`, forces
+  the list to `position: relative`, and re-measures after fonts load. Stylesheet links now carry
+  `?v=YYYYMMDD` so browsers fetch fresh CSS after a push.
 
 ### 2026-10-15 (home PC via Claude, Projects)
 - macOS glass restyle: new `glass.css` linked after `site.css` on `index.html` and

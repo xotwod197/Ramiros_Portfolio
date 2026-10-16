@@ -26,8 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
-<link rel="stylesheet" href="glass.css">
+<link rel="stylesheet" href="site.css?v=20261016">
+<link rel="stylesheet" href="glass.css?v=20261016">
 </head>
 <body>
 
@@ -83,9 +83,12 @@
     <header class="hero">
       <div class="console" id="console" aria-label="Terminal introduction">
         <div class="console-bar">
-          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span>Windows PowerShell</span>
-          <span aria-hidden="true">5.1</span>
+          <span class="console-title"><svg class="ps-ico" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="3" fill="#2671be"/><path d="M4 4.5l4 3.5-4 3.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 11.5h3.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>Windows PowerShell</span>
+          <span class="win-ctrls" aria-hidden="true">
+            <i><svg viewBox="0 0 10 10"><path d="M0 5h10"/></svg></i>
+            <i><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" rx="1.5"/></svg></i>
+            <i class="close"><svg viewBox="0 0 10 10"><path d="M0.5 0.5l9 9M9.5 0.5l-9 9"/></svg></i>
+          </span>
         </div>
         <div class="console-body">
           <div>
@@ -751,20 +754,27 @@
     list.prepend(pill);
     list.classList.add('has-pill');
 
+    // Measure against the list itself (not offsetParent), so the pill stays put even if
+    // a cached stylesheet hasn't made the list position: relative yet.
+    list.style.position = 'relative';
     function movePill() {
       const a = byId[current];
       if (!a || !a.offsetWidth) { pill.classList.remove('on'); return; }
-      pill.style.width = a.offsetWidth + 'px';
-      pill.style.height = a.offsetHeight + 'px';
-      pill.style.transform = 'translate(' + a.offsetLeft + 'px,' + a.offsetTop + 'px)';
+      const r = a.getBoundingClientRect(), l = list.getBoundingClientRect();
+      pill.style.width = r.width + 'px';
+      pill.style.height = r.height + 'px';
+      pill.style.transform = 'translate(' + (r.left - l.left - list.clientLeft) + 'px,' + (r.top - l.top - list.clientTop) + 'px)';
       pill.classList.add('on');
     }
-    // Re-measure when the layout changes (window resize, phone menu opening).
-    new ResizeObserver(() => {
+    // Re-measure without animating when the layout changes (resize, phone menu, fonts loading).
+    function remeasure() {
       pill.classList.remove('ready');
       movePill();
       requestAnimationFrame(() => pill.classList.add('ready'));
-    }).observe(list);
+    }
+    new ResizeObserver(remeasure).observe(list);
+    if (document.fonts) document.fonts.ready.then(remeasure);
+    window.addEventListener('load', remeasure);
 
     function setCurrent(id) {
       if (id === current) return;
@@ -772,7 +782,12 @@
       links.forEach(a => a.removeAttribute('aria-current'));
       if (byId[id]) byId[id].setAttribute('aria-current', 'true');
       movePill();
+      // brief stretch of the accent bar while the pill travels
+      pill.classList.add('moving');
+      clearTimeout(moveTimer);
+      moveTimer = setTimeout(() => pill.classList.remove('moving'), 180);
     }
+    let moveTimer;
 
     const obs = new IntersectionObserver(entries => {
       // pick the visible section closest to the top of the viewport
