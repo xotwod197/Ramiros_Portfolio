@@ -452,7 +452,7 @@
   .status .code.ok { background: var(--ok-soft); color: var(--ok); }
   .status .code.wip { background: var(--amber-soft); color: var(--amber); }
   .status .what b { font-weight: 600; }
-  .status .what span { display: block; font-size: 0.8rem; color: var(--ink-2); }
+  .status .what > span { display: block; font-size: 0.8rem; color: var(--ink-2); }
   .status .when { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-2); white-space: nowrap; }
   .cert-note { margin-top: 1rem; font-size: 0.86rem; color: var(--ink-2); max-width: 60ch; }
 
@@ -465,6 +465,11 @@
     font-size: 0.86rem; color: var(--ink-2);
   }
   .resume-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .phone-pdf-hint { display: none; flex-basis: 100%; font-size: 0.78rem; color: var(--ink-2); }
+  @media (hover: none) and (pointer: coarse) {
+    .print-btn, .resume-bar > span { display: none; }   /* the print sheet on phones is a poor way to save a PDF */
+    .phone-pdf-hint { display: block; }
+  }
   .resume { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 2.25rem 2.5rem; }
   .r-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; padding-bottom: 1.25rem; margin-bottom: 1.25rem; border-bottom: 2px solid var(--ink); }
   .r-name { font-size: 1.7rem; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
@@ -687,7 +692,7 @@
     .hero-cta .btn { justify-content: center; padding: 0.8rem 1.1rem; }
     .facts { display: none; }
     .section { padding-top: 3rem; }
-    .resume-bar span { flex-basis: 100%; }
+    .resume-bar > span { flex-basis: 100%; }
     .resume-actions { width: 100%; }
     .resume-actions .btn { flex: 1 1 auto; justify-content: center; }
     .hero-sub { font-size: 1rem; }

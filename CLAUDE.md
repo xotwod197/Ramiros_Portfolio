@@ -58,6 +58,9 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 - Phone layout: menu button, headline first, shorter page, tighter console block.
 - Projects page: Quick Look / Apple Photos-style screenshot viewer (large image over the blurred
   page, filmstrip of the other views, spring open/close), draggable + scrollable thumbnail strips.
+- **Scrollspy (home sidebar):** current = section with the most visible height; last section at
+  page bottom; nav click locks the highlight until the visitor scrolls. Keep the `.nw` hyphen
+  spans out of descendant `span` selectors (use `> span`).
 - **Glass look — Windows 11 Fluent (adopted 2026-10-16):** Ramiro's experience is Windows, so the
   site leans Windows, not Mac, while keeping the Apple-like polish (glass, springs, pill buttons).
   Windows 11 light "bloom" blue wallpaper (fixed), Mica/acrylic frosted panels (`backdrop-filter`
@@ -122,6 +125,20 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
+
+### 2026-10-19 (work PC via Claude)
+- **Nav highlight fix:** Links and Contact never became current — the IntersectionObserver band
+  (20–35% of the viewport) could not be reached by the short sections at the end of the page.
+  Scrollspy rewritten: the current section is the one occupying the most of the viewport, the
+  last section wins at the very bottom, and a nav click locks the highlight on the chosen
+  section until the visitor scrolls on their own (wheel / touch / keys). `#hash` on load honoured.
+- **Phone fixes:** the hyphen-wrapping script's `<span class="nw">` was being styled as a block
+  by `.status .what span` (certification lines broke into five lines on phones) — selector is now
+  `> span` (same for `.resume-bar > span`). On touch-only devices the "Print / Save as PDF"
+  button and its intro line are hidden and a one-line hint says to use Download PDF, then the
+  share button to save to Files. `?v=20261019` on `site.css` (both pages).
+- Résumé PDF on iPhone: the `download` link itself is unchanged (same-origin, works in Safari);
+  the problem reported was most likely the print sheet. Still to confirm on Ramiro's phone.
 
 ### 2026-10-16 (work PC via Claude)
 - MyNotes card: five new screenshots from the updated app (glass note cards, resizable columns,

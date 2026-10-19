@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=20261016b">
+<link rel="stylesheet" href="site.css?v=20261019">
 <link rel="stylesheet" href="glass.css?v=20261016b">
 </head>
 <body>
@@ -489,12 +489,13 @@
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
           Download PDF
         </a>
-        <button class="btn btn-line" onclick="window.print()">
+        <button class="btn btn-line print-btn" onclick="window.print()">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
           Print / Save as PDF
         </button>
         <button class="btn btn-line resume-toggle" type="button" aria-expanded="false" aria-controls="resume-body">Show full résumé</button>
         </div>
+        <small class="phone-pdf-hint">On a phone, Download PDF opens the résumé — use the share button to save it to Files or send it on.</small>
       </div>
 
       <div class="resume" id="resume-body">
@@ -789,14 +790,33 @@
     }
     let moveTimer;
 
-    const obs = new IntersectionObserver(entries => {
-      // pick the visible section closest to the top of the viewport
-      const visible = entries.filter(e => e.isIntersecting)
-        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      if (visible.length) setCurrent(visible[0].target.id);
-    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
-
-    sections.forEach(s => obs.observe(s));
+    // Which section is current: the one taking up the most of the viewport (ties go to the
+    // earlier one). At the very bottom of the page the last section wins, so the short sections
+    // at the end (Links, Contact) light up even though the page can't scroll them to the top.
+    const last = sections[sections.length - 1];
+    let lock = null;                      // set by a nav click until the visitor scrolls themselves
+    function pick() {
+      if (lock) return;
+      const y = window.scrollY, vh = window.innerHeight;
+      const docH = document.documentElement.scrollHeight;
+      if (y + vh >= docH - 2) { setCurrent(last.id); return; }
+      let id = sections[0].id, best = -1;
+      sections.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        const top = i ? r.top : Math.min(r.top, 0);          // the first section owns the hero above it
+        const vis = Math.min(r.bottom, vh) - Math.max(top, 0);
+        if (vis > best) { best = vis; id = s.id; }
+      });
+      setCurrent(id);
+    }
+    let raf = 0;
+    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; pick(); }); }, { passive: true });
+    window.addEventListener('resize', pick);
+    // A click highlights the chosen section at once and keeps it until the visitor scrolls on their own.
+    links.forEach(a => a.addEventListener('click', () => { lock = a.getAttribute('href').slice(1); setCurrent(lock); }));
+    const unlock = e => { if (!lock) return; if (e.type === 'pointerdown' && e.target.closest('.side-nav, .menu-btn')) return; lock = null; pick(); };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(ev => window.addEventListener(ev, unlock, { passive: true }));
+    if (location.hash && byId[location.hash.slice(1)]) { lock = location.hash.slice(1); setCurrent(lock); } else pick();
   })();
 </script>
 <script>
