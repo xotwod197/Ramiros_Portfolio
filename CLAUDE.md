@@ -56,6 +56,8 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   sticky sidebar nav, Geist + JetBrains Mono (restyled from Bricolage Grotesque + IBM Plex Mono),
   teal accent, wide fluid layout, circular profile photo next to the name.
 - Phone layout: menu button, headline first, shorter page, tighter console block.
+- Résumé section: card is a fading preview (`.resume-wrap`, `--resume-peek`) with a centred
+  expand button below it, on every screen size; print shows it in full.
 - Projects page: Quick Look / Apple Photos-style screenshot viewer (large image over the blurred
   page, filmstrip of the other views, spring open/close), draggable + scrollable thumbnail strips.
 - **Scrollspy (home sidebar):** current = section with the most visible height; last section at
@@ -125,6 +127,15 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
+
+### 2026-10-19, later (work PC via Claude)
+- **Résumé show/hide now works everywhere.** Before, the toggle only did anything under 960px
+  (desktop showed the button but the full résumé was always open). Now the résumé card is a
+  preview on every screen size — capped at 30rem (22rem on phones) with a white fade — and a
+  centred "Show full résumé ▾" button under the card expands it in place with an animated
+  height change; "Show less" collapses and scrolls the card top back into view. The button
+  moved out of the Download/Print bar to below the card. Print always gets the whole résumé.
+  `?v=20261019b`.
 
 ### 2026-10-19 (work PC via Claude)
 - **Nav highlight fix:** Links and Contact never became current — the IntersectionObserver band

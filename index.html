@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=20261019">
+<link rel="stylesheet" href="site.css?v=20261019b">
 <link rel="stylesheet" href="glass.css?v=20261016b">
 </head>
 <body>
@@ -493,11 +493,11 @@
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
           Print / Save as PDF
         </button>
-        <button class="btn btn-line resume-toggle" type="button" aria-expanded="false" aria-controls="resume-body">Show full résumé</button>
         </div>
         <small class="phone-pdf-hint">On a phone, Download PDF opens the résumé — use the share button to save it to Files or send it on.</small>
       </div>
 
+      <div class="resume-wrap" id="resume-wrap">
       <div class="resume" id="resume-body">
         <div class="r-head">
           <div>
@@ -601,6 +601,13 @@
           <h3>Languages</h3>
           <p class="r-p"><strong>English:</strong> Native. <strong>Spanish:</strong> Professional working proficiency, including support for users at the Mexico plant.</p>
         </div>
+      </div>
+      </div>
+      <div class="resume-more">
+        <button class="btn btn-line resume-toggle" type="button" aria-expanded="false" aria-controls="resume-body">
+          <span class="rt-label">Show full résumé</span>
+          <svg class="rt-chev" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
       </div>
     </section>
 
@@ -732,11 +739,33 @@
     side.querySelectorAll('.side-nav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
 
     const resume = document.getElementById('resume-body');
+    const wrap = document.getElementById('resume-wrap');
     const rbtn = document.querySelector('.resume-toggle');
+    const rlabel = rbtn.querySelector('.rt-label');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     rbtn.addEventListener('click', () => {
-      const open = resume.classList.toggle('open');
+      const open = !wrap.classList.contains('open');
+      const from = resume.getBoundingClientRect().height;
+      wrap.classList.toggle('open', open);
+      resume.classList.toggle('open', open);               // print + older rules
       rbtn.setAttribute('aria-expanded', open);
-      rbtn.textContent = open ? 'Hide full résumé' : 'Show full résumé';
+      rlabel.textContent = open ? 'Show less' : 'Show full résumé';
+      if (reduce) { if (!open) wrap.scrollIntoView({ block: 'start' }); return; }
+      // animate height: measure the target, then transition max-height between the two
+      const to = resume.getBoundingClientRect().height;
+      resume.style.transition = 'none';
+      resume.style.maxHeight = from + 'px';
+      void resume.offsetHeight;
+      resume.style.transition = '';
+      resume.style.maxHeight = to + 'px';
+      const done = () => { resume.style.maxHeight = ''; resume.removeEventListener('transitionend', done); };
+      resume.addEventListener('transitionend', done);
+      setTimeout(done, 700);
+      if (!open) {
+        // collapsing from far down the résumé: bring the top of the card back into view
+        const top = wrap.getBoundingClientRect().top;
+        if (top < 0) window.scrollBy({ top: top - 24, behavior: 'smooth' });
+      }
     });
   })();
 

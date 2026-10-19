@@ -127,7 +127,6 @@
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
   .menu-btn { display: none; }
-  .resume-toggle { display: none; }
   .side-nav { list-style: none; display: flex; flex-direction: column; gap: 0.1rem; }
   .side-nav a {
     display: grid;
@@ -471,6 +470,23 @@
     .phone-pdf-hint { display: block; }
   }
   .resume { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 2.25rem 2.5rem; }
+  /* Résumé shows a preview (name, headline, summary, first bullets) with a fade; the button
+     below expands it in place. Same on every screen size; print always gets the whole thing. */
+  .resume-wrap { position: relative; --resume-peek: 30rem; }
+  .resume-wrap .resume { overflow: hidden; transition: max-height 0.6s var(--ease-out); }
+  .resume-wrap:not(.open) .resume { max-height: var(--resume-peek); }
+  .resume-wrap::after {
+    content: ""; position: absolute; left: 1px; right: 1px; bottom: 1px; height: 10rem; pointer-events: none;
+    border-radius: 0 0 var(--r) var(--r);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.92) 70%, #fff);
+    opacity: 1; transition: opacity 0.35s var(--ease-out);
+  }
+  .resume-wrap.open::after { opacity: 0; }
+  .resume-more { display: flex; justify-content: center; position: relative; z-index: 1; margin-top: -1.3rem; }
+  .resume-toggle { gap: 0.45rem; box-shadow: var(--shadow-lift, 0 6px 18px rgba(14, 26, 43, 0.08)); }
+  .resume-toggle .rt-chev { width: 1rem; height: 1rem; transition: transform 0.45s var(--ease-spring); }
+  .resume-wrap.open + .resume-more .rt-chev { transform: rotate(180deg); }
+  @media (max-width: 960px) { .resume-wrap { --resume-peek: 22rem; } }
   .r-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; padding-bottom: 1.25rem; margin-bottom: 1.25rem; border-bottom: 2px solid var(--ink); }
   .r-name { font-size: 1.7rem; font-weight: 650; letter-spacing: -0.02em; line-height: 1.1; }
   .r-title { color: var(--accent-ink); font-weight: 550; font-size: 0.95rem; margin-top: 0.25rem; }
@@ -623,6 +639,8 @@
     .section { padding: 0; }
     .section-head { display: none; }
     .resume { border: none; padding: 0; display: block !important; }
+    .resume-wrap .resume { max-height: none !important; overflow: visible; }
+    .resume-wrap::after, .resume-more { display: none !important; }
     .r-ul li::before { background: #000; }
     .r-section h3, .r-title { color: #000; }
     a { color: inherit; text-decoration: none; }
@@ -659,8 +677,6 @@
     .side-avatar { width: 2.1rem; height: 2.1rem; }
     .side-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 0.15rem 0.75rem; padding: 0.6rem 0 0.35rem; }
     .side-nav a { margin: 0; padding: 0.7rem 0.6rem; font-size: 0.95rem; border-radius: var(--r); }
-    .resume-toggle { display: inline-flex; }
-    .resume:not(.open) { display: none; }
     .content { padding: 0 var(--gutter) 4rem; }
     .hero { padding-top: 2rem; }
     .section { padding-top: 3.5rem; scroll-margin-top: 4.5rem; }
