@@ -92,12 +92,21 @@
     <div class="cards-group" data-group="work">at WCMagnetics</div>
     <div class="cards" data-group="work">
       <article class="card" data-group="work">
-        <figure class="card-shot"><img src="images/wcm-toolbox.webp" alt="WCM Toolbox home screen: a grid of tool tiles for remote session, WinRM, autologon, cleanup and hardware checks" loading="lazy" onerror="this.closest('.card-shot').remove()"></figure>
+        <figure class="card-shot card-gallery">
+          <img src="images/wcm-toolbox.webp" alt="WCM Toolbox home screen in the light glass style: target bar connected to a lab PC, a group rail, and a grid of 37 tool tiles" loading="lazy" onerror="this.closest('.card-shot').remove()">
+          <figcaption>Home · 37 tools in ten groups</figcaption>
+          <div class="gallery-thumbs" role="group" aria-label="WCM Toolbox views">
+            <button type="button" aria-pressed="true" data-label="Home · 37 tools in ten groups" data-alt="WCM Toolbox home screen in the light glass style: target bar connected to a lab PC, a group rail, and a grid of 37 tool tiles"><img src="images/wcm-toolbox.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Hardware Health" data-alt="WCM Toolbox Hardware Health page: event window and report options, then a findings table with OK and warning rows, a summary banner and a link to the HTML report"><img src="images/wcm-toolbox-hardware.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="Python 2.7 Env · three PCs" data-alt="WCM Toolbox Python 2.7 Env page after installing on three lab PCs: progress bar, pre-check table, package version table and a success banner"><img src="images/wcm-toolbox-python.webp" alt="" loading="lazy"></button>
+            <button type="button" aria-pressed="false" data-label="In-app confirm" data-alt="WCM Toolbox Force Restart confirm sheet over the blurred tool page, with Restart and Cancel buttons"><img src="images/wcm-toolbox-confirm.webp" alt="" loading="lazy"></button>
+          </div>
+        </figure>
         <div class="card-body">
           <div class="card-kicker"><span>at WCMagnetics</span><span>shipped</span></div>
           <h3>WCM Toolbox — Remote Support Scripts as a Web App</h3>
-          <p>The PowerShell scripts I reach for every day, bundled into one PowerShell 7 script that serves a local web UI: an Invoke-Command remoting tool, WinRM enable/disable, autologon set/remove for shared production accounts, user profile removal, hardware health checks, drive cleanup, forced uninstall and restart, a remote USB device scanner, and a network file search. Each tool opens as a full page, tiles drag to reorder, and the whole thing runs elevated the same way the scripts always did. All 5.1-compatible where they run remotely.</p>
-          <div class="chips"><span class="chip hi">PowerShell 7</span><span class="chip">local web UI</span><span class="chip">WinRM</span><span class="chip">remote admin</span></div>
+          <p>The PowerShell scripts I reach for every day, bundled into one PowerShell 7 script that serves a local web UI — now 37 tools in ten groups. Remote sessions, forced restart and rename; WinRM, Remote Desktop, local-logon rights and Remote Registry on or off; autologon for shared production accounts; profile removal; hardware health, RAM, storage, USB, driver-integrity, graphics-crash and Desktop Authority client checks; app fixes like a forced uninstaller, Teams reset, Foxit as the default PDF reader and a Python 2.7 installer that readies lab PCs for legacy test-data scripts; plus drive cleanup, Windows repair and a network file search. Every tool opens as a full page with live output, tables and progress bars, risky ones ask first in an in-app sheet, and the Toolbox handles WinRM itself — enabling it over DCOM when a PC needs it and rolling it back on disconnect. Restyled in the same light glass look as MyNotes. Script blocks that run on remote PCs stay Windows PowerShell 5.1-compatible.</p>
+          <div class="chips"><span class="chip hi">PowerShell 7</span><span class="chip">local web UI</span><span class="chip">WinRM / DCOM</span><span class="chip">remote admin</span></div>
         </div>
       </article>
       <article class="card" data-group="work">

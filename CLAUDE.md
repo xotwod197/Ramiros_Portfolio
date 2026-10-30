@@ -128,6 +128,17 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 
 ## Changelog (newest first)
 
+### 2026-10-30 (work PC via Claude)
+- **WCM Toolbox card → four-view gallery** for the v1.3 Toolbox (MyNotes-style light glass,
+  37 tools in ten groups): `wcm-toolbox.webp` (home grid, replaced in place) plus new
+  `wcm-toolbox-hardware.webp` (Hardware Health with findings), `wcm-toolbox-python.webp`
+  (Python 2.7 Env after a three-PC install) and `wcm-toolbox-confirm.webp` (Force Restart
+  confirm sheet). Rendered from the real `ui.html` with demo data only — demo hostnames
+  (`ITDESK-01`, `LAB-12/14/15`), a generic `DOMAIN\helpdesk` credential, made-up results; the
+  Python tool's customer/part identifiers replaced with "Legacy compile scripts". Light theme,
+  16:10, 1600 px WebP. Card text rewritten for the current tool set; chip `WinRM` → `WinRM /
+  DCOM`. Card count unchanged (10). No CSS or résumé change, so no `?v=` bump or PDF regen.
+
 ### 2026-10-19, later (work PC via Claude)
 - **Résumé show/hide now works everywhere.** Before, the toggle only did anything under 960px
   (desktop showed the button but the full résumé was always open). Now the résumé card is a
