@@ -106,12 +106,14 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 - **Projects page = exactly these 10 cards** (don't add others unless Ramiro names them):
   WCM Toolbox · WCM IP Scanner · Silent Deployments (SOLIDWORKS, Windows 11, WorldShip,
   Printers) · Lab Instrument Automation & Support · Employee Onboarding Document Suite ·
-  Shift Dashboard & Status Board · My Task App · MyNotes · Pocket (phone-first money tracker) ·
+  Shift Dashboard · My Task App · MyNotes · Pocket (phone-first money tracker) ·
   Home Lab.
 - **Removed on purpose — never re-add** (home page, projects page, résumé section, or PDF):
   Sage 100 activity dashboard, Photo Wall, CCNA study console, CompTIA A+/Network+ study hubs,
   production work-instruction kiosks, hard-problem case files, the shared-account sign-in
-  tracker, and the OneDrive folder rollback.
+  tracker, the OneDrive folder rollback, and the cubicle status board (removed 2026-10-30 — the
+  Shift Dashboard card stands alone; the "digital signage" job duty that mentions supporting
+  floor status boards is a different thing and stays).
 - **Links:** no per-project source links on cards; GitHub is one general profile link.
   Screenshots only.
 - **Screenshots must be sanitised:** pixelate/censor default passwords, Sage logins, VPN guide
@@ -127,6 +129,23 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
+
+### 2026-10-30, later (work PC via Claude)
+- **Status board removed; Shift Dashboard card rebuilt for its Apple-style redesign.** Card
+  renamed "Shift Dashboard", new three-paragraph description covering every feature (drag/arrow-key
+  break markers, pre-shift countdown, Shift complete screen, 5-min alerts as banner + desktop
+  notification + chime, week bar with payday/holiday chips, holiday banner, calendar with paydays
+  off weekends/closures, computed Easter, click-to-mark OOO, 7-day Open-Meteo forecast, per-weekday
+  schedules + today-only override, 7 clock fonts, solid/rainbow/glow, 24-hour, seconds, 9 accents,
+  StandBy, light/dark). Chips: HTML / JS · Open-Meteo API · Web Notifications · localStorage.
+  Gallery = nine new `shift-dash-*.webp` (today, weather, calendar, settings schedule, settings
+  clock, StandBy, break alert + rainbow clock, before shift, shift complete), rendered from the
+  real `shift-dashboard.html` with a frozen demo clock (Mon 2026-11-23, Thanksgiving week) and a
+  mocked Stockton forecast; light theme except StandBy, which is dark by design. Optional clock
+  fonts were rendered with stand-ins (no web fonts offline), so the Clock-settings tile previews
+  are approximate. Deleted the nine `status-board-*.webp` and the three old `shift-dashboard*.webp`.
+  Home Experience bullet now describes the shift dashboard only. Résumé untouched (its signage
+  bullet is a job duty), so no PDF regen; no CSS change, no `?v=` bump. Card count still 10.
 
 ### 2026-10-30 (work PC via Claude)
 - **WCM Toolbox card → four-view gallery** for the v1.3 Toolbox (MyNotes-style light glass,
