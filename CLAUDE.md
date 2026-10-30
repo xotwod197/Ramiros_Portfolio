@@ -130,7 +130,9 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 
 ### 2026-10-30 (work PC via Claude)
 - **WCM Toolbox card → four-view gallery** for the v1.3 Toolbox (MyNotes-style light glass,
-  37 tools in ten groups): `wcm-toolbox.webp` (home grid, replaced in place) plus new
+  37 tools in ten groups): `wcm-toolbox-home.webp` (home grid at 1920×1200 so all 37 tiles and
+  every rail group show — new filename so browsers don't serve the cached old shot; the old
+  `wcm-toolbox.webp` was removed) plus new
   `wcm-toolbox-hardware.webp` (Hardware Health with findings), `wcm-toolbox-python.webp`
   (Python 2.7 Env after a three-PC install) and `wcm-toolbox-confirm.webp` (Force Restart
   confirm sheet). Rendered from the real `ui.html` with demo data only — demo hostnames
