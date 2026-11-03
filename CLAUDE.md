@@ -20,6 +20,8 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   Experience stays **Help Desk Technician** at West Coast Magnetics (full-time); Target General
   Merchandise Expert (part-time). No schedule days.
 - Public handles: GitHub `xotwod197`, LinkedIn `ramirooherrera`.
+- Personal phone **(209) 998-5104** is public on purpose (résumé header + Contact button,
+  approved 2026-11-03). Company phone numbers still never appear.
 - No custom domain yet (`ramiroomarherrera.com` was tried in Pages settings without owning it;
   `ramiroherrera.com` / `ramiroh.com` were earlier ideas). Don't add a `CNAME` until one is bought.
 
@@ -31,7 +33,7 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 | `projects.html` | All projects with screenshot galleries. Filter All / At WCMagnetics / Personal builds (kept in the URL hash, e.g. `projects.html#work`). |
 | `site.css` | Shared stylesheet for both pages — design tokens, layout, motion, print rules. |
 | `glass.css` | Windows 11 (Fluent) glass layer loaded after `site.css` on both pages — wallpaper, frosted panels, rounded/pill shapes. |
-| `ramiro-herrera-resume.pdf` | Downloadable résumé, **regenerated from `index.html#resume`** whenever the résumé changes so the two never drift. Linked next to the Print / Save as PDF button. |
+| `ramiro-herrera-resume.pdf` | Downloadable résumé. Since 2026-11-03 it is **Ramiro's own PDF, exported from his Word résumé**, and `index.html#resume` mirrors its text word for word. Linked next to the Print / Save as PDF button. |
 | `og-image.png` | 1200×630 share preview, Windows 11 style (PowerShell window on bloom wallpaper). |
 | `images/` | Profile photo + project screenshots (`.webp` preferred). No duplicate image files. |
 | `.github/screenshots/` | Before/after shots used in PR descriptions only. |
@@ -120,15 +122,32 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   names, and **all** company contact details — phone numbers and extensions, emails, street
   address / PO box, `www.wcmagnetics.com` and portal links — including in footers and letterhead.
   Demo data where possible.
-- **Résumé stays consistent with the site.** Two pages is fine. Regenerate the PDF after any
-  résumé edit. (Home PC method: headless Chromium print of `index.html#resume`, Letter, scale
-  0.83, margins 0.45in top/bottom and 0.55in sides, pages 1–2.)
+- **Résumé stays consistent with the site.** Two pages max. Since 2026-11-03 Ramiro supplies the
+  résumé himself (Word file + PDF export): when he sends a new one, replace
+  `ramiro-herrera-resume.pdf` with his PDF and update `index.html#resume` to match it exactly.
+  The Word file is not committed. The résumé header shows his phone number (his choice), not the
+  portfolio URL. If the site's résumé is edited without a new file from him, fall back to
+  regenerating the PDF (home PC method: headless Chromium print of `index.html#resume`, Letter,
+  scale 0.83, margins 0.45in top/bottom and 0.55in sides, pages 1–2).
 - When tailoring for a job, build a preview copy outside the repo first; only change the live
   site once Ramiro approves.
 - Home page shows only a short featured teaser (WCM Toolbox & IP Scanner, My Task App, MyNotes);
   the full list lives on `projects.html`.
 
 ## Changelog (newest first)
+
+### 2026-11-03 (cloud (Claude Projects))
+- **New résumé from Ramiro replaces the old one.** `ramiro-herrera-resume.pdf` swapped for his own
+  2-page PDF (exported from his Word résumé). `index.html#resume` updated to match it: contact
+  block now ends with his phone number instead of the portfolio URL, and the Help Desk bullets
+  are his new nine (merged/reordered; the separate lab-instrument, WorldShip, onboarding-suite and
+  cabling bullets were folded in or dropped as in his file). Summary, Target, education, certs,
+  projects, skills and languages were already identical. No CSS change, no `?v=` bump. Résumé
+  rule under Content rules updated.
+- **Phone number on the site** (Ramiro asked: "keep the number and put it on my portfolio"): the
+  Contact section now has a second pill button `tel:+12099985104` "(209) 998-5104" beside "Send
+  me a message" (new `.contact-actions` row, right-aligned on desktop, stacked left on phones),
+  and the intro line ends "or give me a call". `site.css?v=20261103` on both pages.
 
 ### 2026-10-30, later (work PC via Claude)
 - **Status board removed; Shift Dashboard card rebuilt for its Apple-style redesign.** Card
