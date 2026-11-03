@@ -20,6 +20,8 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   Experience stays **Help Desk Technician** at West Coast Magnetics (full-time); Target General
   Merchandise Expert (part-time). No schedule days.
 - Public handles: GitHub `xotwod197`, LinkedIn `ramirooherrera`.
+- Personal phone **(209) 998-5104** is public on purpose (résumé header + Contact button,
+  approved 2026-11-03). Company phone numbers still never appear.
 - No custom domain yet (`ramiroomarherrera.com` was tried in Pages settings without owning it;
   `ramiroherrera.com` / `ramiroh.com` were earlier ideas). Don't add a `CNAME` until one is bought.
 
@@ -142,6 +144,10 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
   cabling bullets were folded in or dropped as in his file). Summary, Target, education, certs,
   projects, skills and languages were already identical. No CSS change, no `?v=` bump. Résumé
   rule under Content rules updated.
+- **Phone number on the site** (Ramiro asked: "keep the number and put it on my portfolio"): the
+  Contact section now has a second pill button `tel:+12099985104` "(209) 998-5104" beside "Send
+  me a message" (new `.contact-actions` row, right-aligned on desktop, stacked left on phones),
+  and the intro line ends "or give me a call". `site.css?v=20261103` on both pages.
 
 ### 2026-10-30, later (work PC via Claude)
 - **Status board removed; Shift Dashboard card rebuilt for its Apple-style redesign.** Card

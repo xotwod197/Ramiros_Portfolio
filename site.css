@@ -546,6 +546,7 @@
     gap: 1.5rem;
     align-items: center;
   }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: flex-end; }
   .contact h2 { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.03em; }
   .contact p { color: var(--ink-2); margin-top: 0.4rem; max-width: 46ch; }
 
@@ -686,6 +687,7 @@
     .proj-meta { justify-content: flex-start; }
     .link-grid { grid-template-columns: 1fr 1fr; }
     .contact { grid-template-columns: 1fr; padding: 1.5rem; }
+    .contact-actions { justify-content: flex-start; }
     .facts dl { grid-template-columns: 8.5rem 1fr; }
     .resume { padding: 1.5rem; }
     .r-contact { text-align: left; }
