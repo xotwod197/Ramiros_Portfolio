@@ -136,6 +136,23 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 
 ## Changelog (newest first)
 
+### 2026-11-06 (work PC via Claude)
+- **MyNotes card: five new screenshots** for the current app (Log out pill in the sidebar,
+  Synced cloud indicator, long titles fitting the selection highlight). Same filenames,
+  replaced in place: `mynotes.webp`, `mynotes-read.webp`, `mynotes-menu.webp`,
+  `mynotes-tags.webp`, `mynotes-settings.webp` (1600×1000, 16:10). Demo notebook only —
+  generic CompTIA A+ study notes, work-style runbooks, a home-lab plan; no hostnames, no
+  company details. Rendered headless with a mock API; the app's default system font
+  (Segoe UI) was stood in by Inter, code font is the real JetBrains Mono.
+- **MyNotes database moved to Neon** (Render's free Postgres expires): card text now says
+  "Node/Express backend on Render and Postgres on Neon", adds the cloud sync indicator and
+  one-click log out; chip `Postgres` → `Postgres (Neon)`; split-view and read-view alt text
+  updated to match the new shots. Home teaser line updated the same way. No CSS change, so no
+  `?v=` bump.
+- `images/mynotes.jpg` is not referenced by any page (leftover).
+- Merged with the 2026-11-03 home/cloud commits (new résumé PDF, phone button) via rebase;
+  only conflict was this changelog.
+
 ### 2026-11-03 (cloud (Claude Projects))
 - **New résumé from Ramiro replaces the old one.** `ramiro-herrera-resume.pdf` swapped for his own
   2-page PDF (exported from his Word résumé). `index.html#resume` updated to match it: contact
@@ -306,5 +323,10 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 
 ## Open items
 
+- **Résumé MyNotes line still says "Node/Express and Postgres on Render"** (`index.html#resume`
+  and the PDF). The database moved to Neon on 2026-11-06, so it should read "Node/Express on
+  Render and Postgres on Neon". Per the 2026-11-03 résumé rule this comes from Ramiro's Word
+  résumé: he updates the Word file and exports the PDF, then `index.html#resume` is matched to it.
+- `images/mynotes.jpg` is unused — delete it if nothing else needs it (no duplicate images rule).
 - Custom domain: still choosing a name; nothing registered.
 - Keep adding certs / projects / job changes as they happen — only ones Ramiro names.
