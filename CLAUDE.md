@@ -136,6 +136,27 @@ branch `main`, root folder. **Live:** https://xotwod197.github.io/Ramiros_Portfo
 
 ## Changelog (newest first)
 
+### 2026-11-06, later (work PC via Claude)
+- **WCM Toolbox card → ten-view gallery** for the v1.8 Toolbox (41 tools in eleven groups):
+  replaced in place `wcm-toolbox-home.webp` (1920×1200), `wcm-toolbox-python.webp`,
+  `wcm-toolbox-hardware.webp`, `wcm-toolbox-confirm.webp`; new `wcm-toolbox-transfer.webp`
+  (Transfer User Files with the grouped switches), `wcm-toolbox-transfer-test.webp` (its test run),
+  `wcm-toolbox-updates.webp` (App Updates / winget with picked apps),
+  `wcm-toolbox-printers.webp` (Add Printers from the print server),
+  `wcm-toolbox-printer-status.webp` (printers on a PC with duplicates flagged) and
+  `wcm-toolbox-m365.webp` (M365 language-pack removal mid-run: progress bar with step + total
+  timers, running badge). All 1600×1000 (16:10) WebP except home. Gallery `src`s carry
+  `?v=20261106` so the four replaced files aren't served from cache.
+- Rendered from the real `ui.html` with a mock API and demo data only: `ITDESK-01`, `LAB-07/12/14/15`,
+  `DOMAIN\helpdesk`, users `jdoe` / `asmith`, `PRINTSRV01.corp.local`, `FILESRV`, 10.0.x IPs,
+  generic printer names; internal server names, the domain and the Python tool's
+  customer/part identifiers were replaced in the tool texts before rendering. The Toolbox font
+  (Plus Jakarta Sans, Google Fonts) isn't reachable from the render box, so Inter stands in.
+- Card text: 41 tools in eleven groups; adds shut down, user-file transfer (test run first, old PC
+  only read), winget app updates with a never-upgrade list, printers from the print server with
+  duplicate clean-up, M365 language-pack removal, run timers and per-connection session logs.
+  New chip `winget`. No CSS or résumé change, so no `?v=` bump on site.css and no PDF regen.
+
 ### 2026-11-06 (work PC via Claude)
 - **MyNotes card: five new screenshots** for the current app (Log out pill in the sidebar,
   Synced cloud indicator, long titles fitting the selection highlight). Same filenames,
